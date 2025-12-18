@@ -6,18 +6,39 @@ use Illuminate\Http\Request;
 
 class TecnicoCentroController
 {
-    public function mostraListaTecniciCentri(): string
+ public function mostraListaTecnici(): string
     {
-        return "mostraTecniciCentri";
+        return "mostra la lista dei Tecnici Azienda";
     }
 
-    public function mostraTecnicoCentro(): string
+    public function mostraTecnico(): string
     {
-        return "mostraTecnico";
+        return "mostra Tecnico azienda";
     }
 
-    public function aggiornaTecnicoCentro(): string
+    public function mostraFormAggiorna(): string
     {
-        return "aggiornaTecnicoCentro";
+        return "aggiorna la form precompilata per aggiornare il TecnicoAzienda";
     }
+
+    public function aggiornaTecnico(): string
+    {
+        return "aggiorna dati del TecnicoAzienda";
+    }
+
+    public function mostraFormCrea(): string
+    {
+        return "mostraFormCrea TecnicoAzienda";
+    }
+
+    public function creaTecnico(): string
+    {
+        return "creaTecnico TecnicoAzienda";
+    }
+
+    public function cancellaTecnico(): string
+    {
+        return "creaTecnico TecnicoAzienda";
+    }
+
 }

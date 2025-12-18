@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class TecnicoAziendaController
 {
-    public function mostraListaTecniciAzienda(): string
+    public function mostraListaTecnici(): string
     {
         return "mostra la lista dei Tecnici Azienda";
     }
@@ -16,7 +16,7 @@ class TecnicoAziendaController
         return "mostra Tecnico azienda";
     }
 
-    public function mostraForm(): string
+    public function mostraFormAggiorna(): string
     {
         return "aggiorna la form precompilata per aggiornare il TecnicoAzienda";
     }
@@ -36,9 +36,19 @@ class TecnicoAziendaController
         return "salva le spunte di assegna prodotto al tecnico";
     }
 
+    public function mostraFormCrea(): string
+    {
+        return "mostraFormCrea TecnicoAzienda";
+    }
 
+    public function creaTecnico(): string
+    {
+        return "creaTecnico TecnicoAzienda";
+    }
 
-
-
+    public function cancellaTecnico(): string
+    {
+        return "creaTecnico TecnicoAzienda";
+    }
 
 }

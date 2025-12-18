@@ -33,58 +33,75 @@ Route::post('/prodotto', [ProdottoController::class, 'salvaProdotto'])
 
 
 
-Route::get('/tecnici-azienda', [TecnicoAziendaController::class, 'mostraListaTecniciAzienda'])
-    ->name('tecniciazienda.lsita');
+Route::get('/tecnici-azienda', [TecnicoAziendaController::class, 'mostraListaTecnici'])
+    ->name('tecniciazienda.lista');
 
 Route::get('/tecnici-azienda/{tecnicoAziendaId}', [TecnicoAziendaController::class, 'mostraTecnico'])
-    ->name('tecniciazienda.dati');
+    ->name('tecniciazienda.mostra');
 
-Route::get('/tecnici-azienda/{tecnicoAziendaId}', [TecnicoAziendaController::class, 'mostraForm'])
-    ->name('tecniciazienda.form');
+Route::get('/tecnici-azienda/{tecnicoAziendaId}/aggiorna', [TecnicoAziendaController::class, 'mostraFormaggiorna'])
+    ->name('tecniciazienda.formAggiorna');
 
 Route::put('/tecnici-azienda/{tecnicoAziendaId}', [TecnicoAziendaController::class, 'aggiornaTecnico'])
-    ->name('tecniciazienda.form.update');
+    ->name('tecniciazienda.aggiorna');
 
-Route::get('/tecnici-azienda/{tecnicoAziendaId}', [TecnicoAziendaController::class, 'mostraListaAssegna'])
+Route::get('/tecnici-azienda/{tecnicoAziendaId}/crea', [TecnicoAziendaController::class, 'mostraFormCrea'])
+    ->name('tecniciazienda.formCrea');
+
+Route::post('/tecnici-azienda/crea', [TecnicoAziendaController::class, 'creaTecnico'])
+    ->name('tecniciazienda.crea');
+
+Route::delete('/tecnici-azienda/{tecnicoAziendaId}/cancella', [TecnicoAziendaController::class, 'cancellaTecnico'])
+    ->name('tecniciazienda.cancella');
+
+Route::get('/tecnici-azienda/{tecnicoAziendaId}/prodotti', [TecnicoAziendaController::class, 'mostraListaAssegna'])
     ->name('tecniciazienda.assegna');
 
-Route::put('/tecnici-azienda/{tecnicoAziendaId}', [TecnicoAziendaController::class, 'assegnaProdotti'])
+Route::put('/tecnici-azienda/{tecnicoAziendaId}/prodotti', [TecnicoAziendaController::class, 'assegnaProdotti'])
     ->name('tecniciazienda.assegna.update');
 
 
 
+Route::get('/tecnici-centro', [TecnicoCentroController::class, 'mostraListaTecnici'])
+    ->name('tecnicicentro.lista');
 
-Route::get('/admin/tecnici-centri', [TecnicoCentroController::class, 'mostraListaTecniciCentri'])
-    ->name('tecnicicentri');
+Route::get('/tecnici-centro/{tecnicoCentroId}', [TecnicoCentroController::class, 'mostraTecnico'])
+    ->name('tecnicicentro.mostra');
 
-Route::get('/tecnici-centri/{tecnicoCentroId}', [TecnicoCentroController::class, 'mostraTecnico'])
-    ->name('tecnicicentri');
+Route::get('/tecnici-centro/{tecnicoCentroId}/aggiorna', [TecnicoCentroController::class, 'mostraFormaggiorna'])
+    ->name('tecnicicentro.formAggiorna');
 
-Route::put('/tecnici-centro/{tecnicoCentroId}', [TecnicoAziendaController::class, 'aggiornaTecnicoCentro'])
-    ->name('tecnicicentro.update');
+Route::put('/tecnici-centro/{tecnicoCentroId}', [TecnicoCentroController::class, 'aggiornaTecnico'])
+    ->name('tecnicicentro.aggiorna');
 
+Route::get('/tecnici-centro/{tecnicoCentroId}/crea', [TecnicoCentroController::class, 'mostraFormCrea'])
+    ->name('tecnicicentro.formCrea');
 
+Route::post('/tecnici-centro/crea', [TecnicoCentroController::class, 'creaTecnico'])
+    ->name('tecnicicentro.crea');
 
-
-
-
-
-
-Route::get('/admin/aggiungi-prodotto', [AdminController::class, 'aggiungiProdotto'])
-    ->name('tecnicicentri');
-
-Route::post('/admin/aggiungi-prodotto', [AdminController::class, 'modificaProdotto'])
-    ->name('tecnicicentri.store');
+Route::delete('/tecnici-centro/{tecnicoCentroId}/cancella', [TecnicoCentroController::class, 'cancellaTecnico'])
+    ->name('tecnicicentro.cancella');
 
 
 
+Route::get('/prodotto', [ProdottoController::class, 'mostraListaProdotti'])
+    ->name('prodotto.lista');
 
+Route::get('/prodotto/{prodottoId}', [ProdottoController::class, 'mostraProdotto'])
+    ->name('prodotto.mostra');
 
+Route::get('/prodotto/{prodottoId}/aggiorna', [ProdottoController::class, 'mostraFormAggiorna'])
+    ->name('prodotto.formAggiorna');
 
+Route::put('/prodotto/{prodottoId}', [ProdottoController::class, 'aggiornaProdotto'])
+    ->name('prodotto.aggiorna');
 
+Route::get('/prodotto/{prodottoId}/crea', [ProdottoController::class, 'mostraFormCrea'])
+    ->name('prodotto.formCrea');
 
-Route::get('/tecnici-azienda', [AdminController::class, 'mostraTecniciAzienda'])
-    ->name('tecniciazienda');
+Route::post('/prodotto/crea', [ProdottoController::class, 'creaProdotto'])
+    ->name('prodotto.crea');
 
-Route::get('/tecnici-centri', [AdminController::class, 'mostraTecniciCentri'])
-    ->name('tecnicicentri');
+Route::delete('/prodotto/{prodottoId}/cancella', [ProdottoController::class, 'cancellaProdotto'])
+    ->name('prodotto.cancella');

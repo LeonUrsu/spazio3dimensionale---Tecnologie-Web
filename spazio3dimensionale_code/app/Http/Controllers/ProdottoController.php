@@ -6,7 +6,27 @@ use Illuminate\Http\Request;
 
 class ProdottoController
 {
-    public function mostraFormCreaProdotto(): string
+    public function mostraListaProdotti(): string
+    {
+        return "mostra la pagina per creare il prodotto";
+    }
+
+    public function mostraProdotto(): string
+    {
+        return "msotra il prodotto";
+    }
+
+    public function mostraFormAggiorna(): string
+    {
+        return "msotra il form aggiorna";
+    }
+  
+    public function aggiornaProdotto(): string
+    {
+        return "aggiorna il prodotto nel DB";
+    }
+
+    public function mostraFormCrea(): string
     {
         return "mostra la pagina per creare il prodotto";
     }
@@ -18,17 +38,6 @@ class ProdottoController
 
     public function cancellaProdotto(): string
     {
-        return "";
+        return "cancella il prodotto dal DB";
     }
-
-    public function mostraProdotto(): string
-    {
-        return "msotra il prodotto";
-    }
-
-    public function salvaProdotto(): string
-    {
-        return "salva il prodotto e ritorna al catalogo dei prodotti";
-    }
-
 }
