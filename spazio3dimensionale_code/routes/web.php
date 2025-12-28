@@ -134,11 +134,11 @@ Route::middleware(['auth', 'can:isAdmin'])->group(function () {
 
 //del Tecnico Azienda e Tecnico Centro Assistenza
 Route::middleware(['auth', 'can:any:isTecnicoCentro,isTecnicoAzienda'])->group(function () {
-    Route::get('/prodotto/malfunzionamento/mostra/{prodottoId}', [ProdottoController::class, 'mostraMalfunzionamentoProdotto'])
+    Route::get('/prodotto/malsol/mostra/{prodottoId}', [ProdottoController::class, 'mostraMalfunzionamentoProdotto'])
         ->name('prodotto.mostra.mal');
 
-    Route::get('/prodotto/soluzione/mostra/{prodottoId}', [ProdottoController::class, 'mostraSoluzioneProdotto'])
-        ->name('prodotto.mostra.mal.sol');
+        Route::get('/prodotto/malsol/mostra/{prodottoId}', [ProdottoController::class, 'mostraListaMalfunzionamentoProdotto'])
+        ->name('prodotto.mostra.mal.lista');
 });
 
 
@@ -154,22 +154,22 @@ Route::get('/prodotto/mostra/{prodottoId}', [ProdottoController::class, 'mostraP
 //del Tecnico Azienda
 Route::middleware(['auth', 'can:isTecnicoAzienda'])->group(function () {
 
-    Route::get('/prodotto/malfunzionamento/crea/crea', [ProdottoController::class, 'mostraformCreaMal'])
+    Route::get('/prodotto/malsol/crea/crea', [ProdottoController::class, 'mostraformCreaMal'])
         ->name('prodotto.mal.crea.form');
 
-    Route::post('/prodotto/malfunzionamento/crea', [ProdottoController::class, 'creaMal'])
+    Route::post('/prodotto/malsol/crea', [ProdottoController::class, 'creaMal'])
         ->name('prodotto.mal.crea');
 
-    Route::get('/prodotto/malfunzionamento/form/aggiorna/{prodottoId}', [ProdottoController::class, 'mostraformAggiornaMal'])
-        ->name('prodotto.formAggiorna.mal');
+    Route::get('/prodotto/malsol/form/aggiorna/{prodottoId}', [ProdottoController::class, 'mostraformAggiornaMal'])
+        ->name('prodotto.formAggiorna.malsol');
 
-    Route::put('/prodotto/malfunzionamento/aggiorna/{prodottoId}', [ProdottoController::class, 'aggiornaMal'])
-        ->name('prodotto.aggiorna.mal');
+    Route::put('/prodotto/malsol/aggiorna/{prodottoId}', [ProdottoController::class, 'aggiornaMalSol'])
+        ->name('prodotto.aggiorna.malsol');
 
-    Route::delete('/prodotto/malfunzionamento/cancella/{prodottoId}', [ProdottoController::class, 'cancellaMal'])
-        ->name('prodotto.cancella.mal');
+    Route::delete('/prodotto/malsol/cancella/{prodottoId}', [ProdottoController::class, 'cancellaMalSol'])
+        ->name('prodotto.cancella.malsol');
 
-    Route::get('/prodotto/soluzione/crea/form', [ProdottoController::class, 'mostraformCreaSol'])
+/*     Route::get('/prodotto/soluzione/crea/form', [ProdottoController::class, 'mostraformCreaSol'])
         ->name('prodotto.sol.crea.form');
 
     Route::post('/prodotto/soluzione/crea', [ProdottoController::class, 'creaSol'])
@@ -182,5 +182,5 @@ Route::middleware(['auth', 'can:isTecnicoAzienda'])->group(function () {
         ->name('prodotto.aggiorna.sol');
 
     Route::delete('/prodotto/soluzione/cancella/{prodottoId}', [ProdottoController::class, 'cancellaSol'])
-        ->name('prodotto.cancella.sol');
+        ->name('prodotto.cancella.sol'); */
 });

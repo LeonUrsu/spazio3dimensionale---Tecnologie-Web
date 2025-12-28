@@ -1,8 +1,6 @@
 <x-base>
-
-    <form action="{{route('prodotto.aggiorna, $prodotto->id')}}" method="POST">
+    <form action="{{route('prodotto.crea')}}" method="GET">
         @csrf
-        @method('PUT')
         <input type="text" name="marca" placeholder="marca">
         <input type="text" name="modello" placeholder="modello">
         <input type="text" name="descrizione" placeholder="descrizione">
@@ -12,6 +10,7 @@
         <input type="text" name="peso" placeholder="peso">
         <input type="text" name="consumo_watt" placeholder="consumo_watt">
         <input type="text" name="volume_stampa" placeholder="volume_stampa">
+        {{--potrei aggiungere una box per fare drag and drop delle foto del prodotto--}}
         <button method="submit">Salva</button>
     </form>
 </x-base>

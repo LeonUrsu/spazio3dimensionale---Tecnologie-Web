@@ -12,3 +12,6 @@
     <footer>  esame 2025 spazio3dimensionale  </footer>
 </body>
 </html>
+
+
+{{--potrei creare un componente per il form aggiorna e crea prodotto visto che sono simili--}}

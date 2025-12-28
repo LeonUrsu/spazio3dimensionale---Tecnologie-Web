@@ -1,3 +1,4 @@
+<x-base>
 <div>
     <form action="{{route('home')}}">
         <button>Indietro</button>
@@ -13,4 +14,4 @@
     <div>
         {{ $centri->links() }}
     </div>
-</div>
+</div></x-base>

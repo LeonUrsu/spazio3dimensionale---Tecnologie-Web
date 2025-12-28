@@ -23,17 +23,17 @@
         <form action="{{route('prodotto.formAggiorna, $prodotto->id')}}" method=GET>
             <button type="submit">aggiorna Prodotto</button>
         </form>
-
-
         @endcan
 
         @can('isTecnicoCentro')
-        <button>Visualizza Malfunzionamenti</button>
+        <form action="{{prodotto.mostra.mal.lista, $prodotto_id}}">
+            <button>Visualizza Malfunzionamenti</button>
+        </form>
         @endcan
 
         @can('isTecnicoAzienda')
         <button></button>
-        <button>aggiorna Prodotto</button>
+        <button>aggiorna soluzione</button>
         @endcan
     </div>
 </x-base>
