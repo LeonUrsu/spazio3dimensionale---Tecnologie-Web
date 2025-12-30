@@ -11,7 +11,7 @@ class CentroAssistenzaController
     {
         $centriList = Centro::paginate(2);
 
-        return view("public/centri")->with("centri", $centriList);
+        return view("centri")->with("centri", $centriList);
     }
 
     public function mostraCentro(): string

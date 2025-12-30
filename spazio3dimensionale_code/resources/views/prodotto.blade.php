@@ -15,18 +15,18 @@
         <div>Modalità di installazione: {{$prodotto->modalità_installazione}}</div>
 
         @can('isAdmin')
-        <form action="{{route('prodotto.cancella, $prodotto->id')}}" method=POST>
+        <form action="{{route('prodotto.cancella', $prodotto->id)}}" method=POST>
             @csrf
             @method('DELETE')
             <button type="submit">elimina Prodotto</button>
         </form>
-        <form action="{{route('prodotto.formAggiorna, $prodotto->id')}}" method=GET>
+        <form action="{{route('prodotto.formAggiorna', $prodotto->id)}}" method=GET>
             <button type="submit">aggiorna Prodotto</button>
         </form>
         @endcan
 
         @can('isTecnicoCentro')
-        <form action="{{prodotto.mostra.mal.lista, $prodotto_id}}">
+        <form action="{{'prodotto.mostra.mal.lista', $prodotto_id}}">
             <button>Visualizza Malfunzionamenti</button>
         </form>
         @endcan

@@ -16,7 +16,7 @@ class ProdottiSeeder extends Seeder
         Prodotto::create([
             'marca' => 'TreDimensionale',
             'modello' => 'Ember 3',
-            'descrizione' => '',
+            'descrizione' => 'Stampante a resina con risoluzione 12K per dettagli microscopici, ideale per gioielleria e miniature.',
             'modalità_installazione' => 'Il montaggio della Ember 3 è progettato per essere completato in soli 20 minuti. La stampante arriva in tre moduli principali pre-assemblati. Basta fissare il telaio alla base con le viti incluse, collegare i cavi pre-etichettati e inserire il sensore di filamento. Non sono richieste saldature o conoscenze elettroniche.',
             'prezzo' => '200',
             'dimensioni' => '40x70x100[cm^3]',

@@ -1,10 +1,14 @@
+@props(['malsol'])
 <x-base>
-    <form action="{{route('prodotto.aggiorna.malsol, $prodotto->id')}}" method="POST">
+    <form action="{{route('prodotto.aggiorna.malsol', $malsol->id)}}" method="POST">
         @csrf
         @method('PUT')
-        <input type="text" name="mal" placeholder="malfunzionamento">
-        <input type="text" name="sol" placeholder="soluzione">
-        {{--da mettere i testi che si sono già in questo modo ogni volta il malfunzionamento e sol nn sono vuoti--}}
-        <button method="submit">Salva</button>
+        <textarea name="mal" placeholder="malfunzionamento">{{$malsol->mal}}</textarea>
+        <textarea name="sol" placeholder="soluzione">{{$malsol->mal}}</textarea>
+        <button type="submit">Salva</button>
+        {{--Mettere una schermata di verifica se si vuole procedere con il salvataggio--}}
     </form>
+    <a href="{{ url()->previous() }}">
+        <button type="button">Annulla</button>
+    </a>
 </x-base>

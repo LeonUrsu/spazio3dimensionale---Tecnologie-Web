@@ -14,11 +14,19 @@
         @endauth
         <form action="{{route('centro.lista')}}" method=GET>
             @csrf
-            <button type="submit">Centri disponibili</button>
+            <button type="submit">Centri Disponibili</button>
         </form>
         <form action="{{route('prodotto.lista')}}" method=GET>
             @csrf
-            <button type="submit">Catalogo prodotti</button>
+            <button type="submit">Catalogo Prodotti</button>
         </form>
+        @can('isAdmin')
+        <form action="{{route('tecnico.centro.lista')}}" method=GET>
+            <button type="submit">Vedi Tecnici Centri</button>
+        </form>
+        <form action="{{route('tecnico.azienda.lista')}}" method=GET>
+            <button type="submit">Vedi Tecnici Azienda</button>
+        </form>
+        @endcan
     </div>
 </x-base>

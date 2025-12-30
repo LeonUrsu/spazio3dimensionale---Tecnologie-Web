@@ -11,7 +11,7 @@ class PublicController # Controller che gestisce le interazione degli utenti non
 
     public function mostraHome()
     {
-        return view("public/home");
+        return view("home");
     }
 
     #Solo per utenti non autenticati

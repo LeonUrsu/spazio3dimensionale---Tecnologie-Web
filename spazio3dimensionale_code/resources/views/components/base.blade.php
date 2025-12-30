@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Spazio3Dimensionale</title>
     <link rel="stylesheet" href="/style.css">
 </head>
+
 <body>
     <main>
-        {{ $slot }} 
+        {{ $slot }}
     </main>
     <br>
-    <footer>  esame 2025 spazio3dimensionale  </footer>
+    <footer> esame 2025 spazio3dimensionale </footer>
 </body>
+
 </html>
 
 
