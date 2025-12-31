@@ -1,4 +1,4 @@
-@props([$prodotto])
+@props(['prodotto'])
     <div>
         <div>
             <form action="{{route('prodotto.lista')}}" method=GET>
@@ -26,7 +26,7 @@
         @endcan
 
         @can('isTecnicoCentro')
-        <form action="{{'prodotto.mostra.mal.lista', $prodotto_id}}">
+        <form action="{{'prodotto.mostra.mal.lista', $prodotto_id}}" method=GET>
             <button>Visualizza Malfunzionamenti</button>
         </form>
         @endcan

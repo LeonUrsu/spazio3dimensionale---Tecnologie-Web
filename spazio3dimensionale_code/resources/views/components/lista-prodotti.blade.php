@@ -4,7 +4,7 @@
     </form>
     <h1>Catalogo dei prodotti disponibili</h1>
     @can('isAdmin')
-    <form action="{{route('prodotto.formCrea')}}">
+    <form action="{{route('prodotto.form.crea')}}">
         <button>Aggiungi Prodotto</button>
     </form>
     @endcan

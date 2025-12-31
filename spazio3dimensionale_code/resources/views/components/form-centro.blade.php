@@ -1,8 +1,7 @@
 @props(['rotta', 'centro'=> null, 'metodo'=>'POST'])
 <div>
     <p>
-    <form action="{{route($rotta, $centro?->id)}}" method="POST">
-        @csrf
+    <form action="{{ $centro ? route($rotta, $centro->id) : route($rotta) }}" method="POST"> @csrf
         @if($metodo == 'PUT') @method('PUT') @endif
         <input type="text" name="nome" placeholder="nome" value="{{ old('nome', $centro?->nome) }}">
         <input type="text" name="stato" placeholder="stato" value="{{ old('stato', $centro?->stato) }}">

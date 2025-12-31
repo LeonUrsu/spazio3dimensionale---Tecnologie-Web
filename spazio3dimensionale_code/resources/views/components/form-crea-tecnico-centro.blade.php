@@ -1,6 +1,6 @@
 <div>
     <br>
     <input type="text" name="centro_id" placeholder="centro id" >
-    {{--qui andrebbe fatta una box scroll aggiutiva in cui si sceglie il centro al quale associare il tecnico azienda invede del id--}}
+    {{--TODO? una box scroll aggiutiva in cui si sceglie il centro al quale associare il tecnico azienda invede di digitare l'id--}}
     <br>
 </div>

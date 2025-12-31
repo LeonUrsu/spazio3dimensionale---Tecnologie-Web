@@ -41,13 +41,13 @@ class ProdottoController
     {
         $prodotto = Prodotto::findOrFail($id);
         $prodotto->update($request->all());
-        return redirect()->route('prodotto.lista')->with('success', 'Aggiornato!');
+        return redirect()->route('prodotto.lista');
     }
 
     #Metodo per mostrare all'utente la form per aggiornare i dati di un prodotto
     public function mostraFormCrea()
     {
-        return view("form-aggiorna-prodotto");
+        return view("form-crea-prodotto");
     }
 
     #Metodo per creare all'interno del DB un prodotto con dati compilati attraverso il web form

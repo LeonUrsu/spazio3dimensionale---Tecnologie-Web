@@ -67,13 +67,13 @@ Route::middleware(['auth', 'can:isAdmin'])->group(function () {
 
     //rotte gestione prodotti
     Route::get('/prodotto/form/aggiorna/{prodottoId}', [ProdottoController::class, 'mostraFormAggiornaProdotto'])
-        ->name('prodotto.formAggiorna');
+        ->name('prodotto.form.aggiorna');
 
     Route::put('/prodotto/aggiorna/{prodottoId}', [ProdottoController::class, 'aggiornaProdotto'])
         ->name('prodotto.aggiorna');
 
     Route::get('/prodotto/crea/form', [ProdottoController::class, 'mostraFormCrea'])
-        ->name('prodotto.formCrea');
+        ->name('prodotto.form.crea');
 
     Route::post('/prodotto/crea', [ProdottoController::class, 'creaProdotto'])
         ->name('prodotto.crea');
