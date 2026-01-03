@@ -79,7 +79,7 @@ class ProdottoController
     public function mostraFormAggiornaMalSol($id)
     {
         $malSol = Malsol::findOrFail($id);
-        return view("form-aggiorna-prodotto")->with("malSol", $malSol);
+        return view("form-aggiorna-mal-sol-prodotto")->with('malSol', $malSol)->with('prodotto_id', $malSol->prodotto_id);
     }
 
     #Metodo per aggiornare i malfunzionamenti e la soluzione associata nel DB di un prodotto attarverso un id del prodotto
@@ -90,21 +90,22 @@ class ProdottoController
             'mal'   => $request->input('mal'),
             'sol' => $request->input('sol'),
         ]);
-        return view('prodotto.catalogo');
+        return redirect()->route('prodotto.malsol.mostra', ['malSolId' => $id])->with('success', 'Centro aggiornato!');
     }
 
     #Metodo per cancellare i malfunzionamenti e la soluzione associata nel DB di un prodotto attarverso un id del prodotto
     public function cancellaMalSol(Request $request, $id)
     {
-        #$malsol = Malsol::findOrFail($id);
-        #$malsol->delete();
-        return view('prodotto.catalogo');
+        //TODO da cancellare i commento per farla funzionare
+        $malSol = Malsol::findOrFail($id);
+        #$malSol->delete();
+        return redirect()->route('prodotto.malsol.lista', ['prodottoId' => $malSol->prodotto_id])->with('success', 'Centro aggiornato!');
     }
 
     #Metodo per mostrare la form per creare il malsol del prodotto e la sua soluzione
-    public function mostraformCreaMalSol()
+    public function mostraformCreaMalSol(Request $request)
     {
-        return view('form-crea-mal-sol-prodotto');
+        return view('form-crea-mal-sol-prodotto', ['prodotto_id' => $request->prodotto_id]);
     }
 
     #Metodo per creare nel DB un nuovo malsol associato al prodotto
@@ -116,8 +117,8 @@ class ProdottoController
             'prodotto_id' => 'required|exists:prodotti,id',
         ]);
         Malsol::create($validated);
-        // Ritorna alla pagina del prodotto con un messaggio di successo
         return redirect()->route('prodotto.mostra', $request->prodotto_id)
             ->with('success', 'Malfunzionamento salvato correttamente!');
     }
+
 }

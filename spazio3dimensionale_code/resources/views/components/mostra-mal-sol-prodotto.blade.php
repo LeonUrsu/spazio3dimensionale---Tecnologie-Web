@@ -5,10 +5,10 @@
     <p>soluzione : {{$malSol->sol}}</p>
 
     @can('isTecnicoAzienda')
-    <form action="{{route('prodotto.form.aggiorna.malsol', $malSol->id)}}" method="POST">
+    <form action="{{route('prodotto.malsol.form.aggiorna', $malSol->id)}}" method='GET'>
         <button type="submit">Aggiorna</button>
     </form>
-    <form action="{{route('prodotto.cancella.malsol', $malSol->id)}}" method="POST">
+    <form action="{{route('prodotto.malsol.cancella', $malSol->id)}}" method='POST'>
         @csrf
         @method('DELETE')
         <button type="submit">Cancella</button>

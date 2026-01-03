@@ -168,20 +168,20 @@ Route::get('/prodotto/mostra/{prodottoId}', [ProdottoController::class, 'mostraP
 //del Tecnico Azienda
 Route::middleware(['auth', 'can:isTecnicoAzienda'])->group(function () {
 
-    Route::get('/prodotto/malsol/crea/crea', [ProdottoController::class, 'mostraformCreaMalSol'])
+    Route::get('/prodotto/malsol/form/crea/{prodotto_id}', [ProdottoController::class, 'mostraformCreaMalSol'])
         ->name('prodotto.form.crea.malsol');
 
     Route::post('/prodotto/malsol/crea', [ProdottoController::class, 'creaMalSol'])
         ->name('prodotto.crea.malsol');
 
     Route::get('/prodotto/malsol/form/aggiorna/{prodottoId}', [ProdottoController::class, 'mostraformAggiornaMalSol'])
-        ->name('prodotto.form.aggiorna.malsol');
+        ->name('prodotto.malsol.form.aggiorna');
 
     Route::put('/prodotto/malsol/aggiorna/{prodottoId}', [ProdottoController::class, 'aggiornaMalSol'])
-        ->name('prodotto.aggiorna.malsol');
+        ->name('prodotto.malsol.aggiorna');
 
     Route::delete('/prodotto/malsol/cancella/{prodottoId}', [ProdottoController::class, 'cancellaMalSol'])
-        ->name('prodotto.cancella.malsol');
+        ->name('prodotto.malsol.cancella');
 
     /*     Route::get('/prodotto/soluzione/crea/form', [ProdottoController::class, 'mostraformCreaSol'])
         ->name('prodotto.sol.crea.form');
