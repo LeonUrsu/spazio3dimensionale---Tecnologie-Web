@@ -1,8 +1,9 @@
-@props(['rotta', 'prodotto'=>null, 'metodo'=>'POST'])
+@props(['action', 'prodotto'=>null, 'metodo'=>'POST'])
 <div>
-    <form action="{{ $prodotto ? route($rotta, $prodotto->id) : route($rotta) }}" method="POST">
+    <form action="{{$action}}" method="POST" onsubmit="return confirm('Sei sicuro di voler salvare le modifiche?')">
         @csrf
         @if($metodo == 'PUT') @method('PUT') @endif
+        <input type="file" name="immagine" accept="image/*">{{--per aggiorna non si salva l'immagine--}}
         <input type="text" name="marca" placeholder="marca" value="{{ old('marca', $prodotto?->marca) }}">
         <input type="text" name="modello" placeholder="modello" value="{{ old('modello', $prodotto?->modello) }}">
         <textarea name="descrizione" placeholder="descrizione">{{ old('descrizione', $prodotto?->descrizione) }}</textarea>

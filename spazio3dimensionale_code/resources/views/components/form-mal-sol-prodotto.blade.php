@@ -5,6 +5,8 @@
         @csrf
         @if($method == 'PUT') @method('PUT') @endif
         <input type="hidden" name="prodotto_id" value={{$prodotto_id}}>
+        <label>Titolo:</label>
+        <textarea name="titolo" placeholder="titolo">{{ old('mal', $malSol?->titolo) }}</textarea>
         <label>Malfunzionamento:</label>
         <textarea name="mal" placeholder="malfunzionamento">{{ old('mal', $malSol?->mal) }}</textarea>
         <label>Soluzione:</label>

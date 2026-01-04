@@ -14,6 +14,7 @@ class ProdottiSeeder extends Seeder
     public function run(): void
     {
         Prodotto::create([
+            'immagine_path' => '1.jpg',
             'marca' => 'TreDimensionale',
             'modello' => 'Ember 3',
             'descrizione' => 'Stampante a resina con risoluzione 12K per dettagli microscopici, ideale per gioielleria e miniature.',
@@ -26,6 +27,7 @@ class ProdottiSeeder extends Seeder
         ]);
 
         Prodotto::create([
+            'immagine_path' => '2.jpg',
             'marca' => 'TreDimensionale',
             'modello' => 'Photon Mono MS5s',
             'descrizione' => 'Stampante a resina con risoluzione 12K per dettagli microscopici, ideale per gioielleria e miniature.',
@@ -38,6 +40,7 @@ class ProdottiSeeder extends Seeder
         ]);
 
         Prodotto::create([
+            'immagine_path' => '3.jpg',
             'marca' => 'TreDimensionale',
             'modello' => 'GP1S',
             'descrizione' => 'Sistema CoreXY ultra-veloce con camera chiusa, perfetta per stampare materiali tecnici come ABS e Nylon.',
@@ -50,6 +53,7 @@ class ProdottiSeeder extends Seeder
         ]);
 
         Prodotto::create([
+            'immagine_path' => '4.jpg',
             'marca' => 'TreDimensionale',
             'modello' => 'Mamba 4 Max',
             'descrizione' => 'Stampante gigante per chi ha bisogno di stampare caschi, cosplay o prototipi industriali in un unico pezzo.',
@@ -62,6 +66,7 @@ class ProdottiSeeder extends Seeder
         ]);
 
         Prodotto::create([
+            'immagine_path' => '5.jpg',
             'marca' => 'TreDimensionale',
             'modello' => 'Pixel 8K Pro',
             'descrizione' => 'Stampante a resina con risoluzione ultra-definita per miniature dettagliate, gioielleria e modelli dentali di alta precisione.',
@@ -74,6 +79,7 @@ class ProdottiSeeder extends Seeder
         ]);
 
         Prodotto::create([
+            'immagine_path' => '6.jpg',
             'marca' => 'TreDimensionale',
             'modello' => 'Fusion 300 XT',
             'descrizione' => 'Stampante FDM industriale con camera riscaldata per filamenti tecnici come carbonio e nylon ad alta resistenza termica.',
@@ -86,6 +92,7 @@ class ProdottiSeeder extends Seeder
         ]);
 
         Prodotto::create([
+            'immagine_path' => '7.jpg',
             'marca' => 'TreDimensionale',
             'modello' => 'BeamCutter G3',
             'descrizione' => 'Incisore laser a diodo per taglio legno e incisione metalli con sistema di protezione oculare e assistenza ad aria compressa.',
@@ -98,6 +105,7 @@ class ProdottiSeeder extends Seeder
         ]);
 
         Prodotto::create([
+            'immagine_path' => '8.jpg',
             'marca' => 'TreDimensionale',
             'modello' => 'AquaJet 4000',
             'descrizione' => 'Sistema di pulizia a ultrasuoni per la rimozione dei residui di resina e finitura superficiale di pezzi meccanici complessi.',
@@ -110,6 +118,7 @@ class ProdottiSeeder extends Seeder
         ]);
 
         Prodotto::create([
+            'immagine_path' => '9.jpg',
             'marca' => 'TreDimensionale',
             'modello' => 'Spark-Core V2',
             'descrizione' => 'Saldatrice inverter portatile per piccoli lavori di carpenteria leggera e riparazioni elettroniche con controllo digitale dell arco.',
@@ -122,6 +131,7 @@ class ProdottiSeeder extends Seeder
         ]);
 
         Prodotto::create([
+            'immagine_path' => '10.jpg',
             'marca' => 'TreDimensionale',
             'modello' => 'Metal-Mini S1',
             'descrizione' => 'Micro-stampante per polveri metalliche con tecnologia laser SLS per la creazione di componenti aerospaziali miniaturizzati.',
@@ -134,6 +144,7 @@ class ProdottiSeeder extends Seeder
         ]);
 
         Prodotto::create([
+            'immagine_path' => '11.jpg',
             'marca' => 'TreDimensionale',
             'modello' => 'Recycle-Bot 5',
             'descrizione' => 'Estrusore domestico per la trasformazione di scarti plastici in nuovo filamento pronto all uso per stampanti 3D consumer.',
@@ -146,6 +157,7 @@ class ProdottiSeeder extends Seeder
         ]);
 
         Prodotto::create([
+            'immagine_path' => '12.jpg',
             'marca' => 'TreDimensionale',
             'modello' => 'Optic-Point X',
             'descrizione' => 'Scanner a luce strutturata per la digitalizzazione di oggetti fisici con precisione al micron e generazione automatica di mesh.',
@@ -158,6 +170,7 @@ class ProdottiSeeder extends Seeder
         ]);
 
         Prodotto::create([
+            'immagine_path' => '13.jpg',
             'marca' => 'TreDimensionale',
             'modello' => 'Vacu-Press M1',
             'descrizione' => 'Termoformatrice a vuoto per la creazione di stampi in plastica e packaging personalizzato tramite fogli termo-sensibili.',
@@ -170,6 +183,7 @@ class ProdottiSeeder extends Seeder
         ]);
 
         Prodotto::create([
+            'immagine_path' => '14.jpg',
             'marca' => 'TreDimensionale',
             'modello' => 'Plot-Trace 50',
             'descrizione' => 'Plotter di precisione per la prototipazione rapida di circuiti stampati flessibili tramite deposizione di inchiostro conduttivo.',
@@ -182,6 +196,7 @@ class ProdottiSeeder extends Seeder
         ]);
 
         Prodotto::create([
+            'immagine_path' => '15.jpg',
             'marca' => 'TreDimensionale',
             'modello' => 'Casting-Station',
             'descrizione' => 'Forno fusorio compatto per leghe leggere con sistema di colata centrifuga per gioielleria e piccoli componenti meccanici.',

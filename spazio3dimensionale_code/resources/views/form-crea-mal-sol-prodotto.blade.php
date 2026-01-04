@@ -1,5 +1,5 @@
 <x-base>
-    <x-form-mal-sol-prodotto :action="route('prodotto.crea.malsol')" prodotto_id />
+    <x-form-mal-sol-prodotto :action="route('prodotto.crea.malsol')" :$prodotto_id />
 </x-base>
 
 

@@ -5,6 +5,7 @@
             <button type="submit">Indietro</button>
         </form>
     </div>
+    <img src="{{ asset('storage/immagini/' . $prodotto->immagine_path) }}" alt="Immagine Prodotto">
     <div>Informazioni su {{$prodotto->marca}} {{$prodotto->modello}}</div>
     <div>Descrizione: {{$prodotto->descrizione}}</div>
     <div>Dimensioni: {{$prodotto->dimensioni}}</div>

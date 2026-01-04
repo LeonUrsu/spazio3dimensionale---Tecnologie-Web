@@ -11,7 +11,10 @@
         {{ $slot }}
     </main>
     <br>
-    <footer> esame 2025 spazio3dimensionale </footer>
+    <footer> 
+        <p>Informazioni del sito da mettere forse caricate da un file config</p>
+        <p>esame 2025 spazio3dimensionale </p>
+    </footer>
 </body>
 
 </html>

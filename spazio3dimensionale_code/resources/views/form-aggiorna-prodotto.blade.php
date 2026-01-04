@@ -1,3 +1,6 @@
 <x-base>
-    <x-form-prodotto rotta="prodotto.aggiorna" :$prodotto metodo="PUT" />
+    <x-form-prodotto :action="route('prodotto.aggiorna', $prodotto->id)" :$prodotto metodo="PUT" />
 </x-base>
+
+
+

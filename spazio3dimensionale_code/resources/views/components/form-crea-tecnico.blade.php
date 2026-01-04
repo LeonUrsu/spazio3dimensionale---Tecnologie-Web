@@ -1,6 +1,6 @@
 @props(['rotta', 'tecnico' => null,'metodo' => 'POST'])
 <div>
-    <form action="{{route($rotta, $tecnico?->id)}}" method="POST">
+    <form action="{{route($rotta, $tecnico?->id)}}" method="POST" onsubmit="return confirm('Sei sicuro di voler salvare le modifiche?')">
         @csrf
         @if($metodo == 'PUT') @method('PUT') @endif {{--put per gli aggiornamenti laravel--}}
         <input type="text" name="nome" placeholder="nome" value="{{ old('nome', $tecnico?->nome) }}">

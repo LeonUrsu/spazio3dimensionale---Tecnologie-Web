@@ -13,6 +13,7 @@ class Prodotto extends Model
     #protected $guarded = ['prodId'];
     #public $timestamps = false; #disabilità la gestione automatica delle date in laravel
     protected $fillable = [
+        'immagine_path',
         'marca',
         'modello',
         'descrizione',
@@ -25,5 +26,4 @@ class Prodotto extends Model
     ];
     #Metodo da usare nei controller per creare nei DB gli oggetti
     #Prodotto::create($request->all());
-
 }

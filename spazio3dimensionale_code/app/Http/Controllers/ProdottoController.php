@@ -11,7 +11,32 @@ class ProdottoController
     #Metodo per mostrare un catalogo dei prodotti all'utente, i prodotti sono paginati
     public function mostraListaProdotti()
     {
-        $prodotti = Prodotto::paginate(2);
+        $prodotti = Prodotto::paginate(10);
+        return view('lista-prodotti')->with("prodotti", $prodotti);
+    }
+
+    //TODO da sistemare e da riprogettare
+    #Metodo per mostrare un catalogo dei prodotti all'utente filtrati tramite un termine di ricerca o un temine di ricerca parziale
+    public function mostraListaProdottiCercati(Request $request)
+    {
+        $parola = $request->input('ricerca'); //recupero della parola dal campo ''desc
+        //RIcorda che DB usa % al posto di *
+        /*         if (str_ends_with($parola, '*')) {
+            $ricerca = str_replace('*', '%', $parola);
+        } else {
+            $ricerca = '%' . $parola . ' %';
+        }
+        */
+        if (str_ends_with($parola, '*')) {
+            $base = rtrim($parola, '*');
+            $prodotti = Prodotto::where('descrizione', 'LIKE', '%' . $base . '%')->get();
+            $prodotti = Prodotto::where('descrizione', 'LIKE', '%' . $base . '%')->paginate();
+        } else {
+            #$prodotti = Prodotto::where('descrizione', 'REGEXP', '[[:<:]]' . $parola . '[[:>:]]')->get();   // dobbiamo cercare "lav" come parola isolata (non dentro altre parole)
+            $prodotti = Prodotto::where('descrizione', 'REGEXP', '[[:<:]]' . $parola . '[[:>:]]')->paginate();   // dobbiamo cercare "lav" come parola isolata (non dentro altre parole)
+        }
+        #$prodotti = Prodotto::where('descrizione', 'LIKE', $ricerca)->get();
+        #dd($prodotti);
         return view('lista-prodotti')->with("prodotti", $prodotti);
     }
 
@@ -28,8 +53,6 @@ class ProdottoController
         $prodotto = Prodotto::findOrFail($id);
         return view('form-aggiorna-prodotto')->with("prodotto", $prodotto);
     }
-
-
 
     #Metodo per aggiornare all'interno del DB i dati del prodotto che sono stati aggiornati attraverso il web form
     public function aggiornaProdotto(Request $request, $id)
@@ -48,7 +71,13 @@ class ProdottoController
     #Metodo per creare all'interno del DB un prodotto con dati compilati attraverso il web form
     public function creaProdotto(Request $request)
     {
-        $prodotto = Prodotto::create($request->all());
+        $dati = $request->all();
+        if ($request->hasFile('immagine')) {
+            // Salva il file nella cartella 'public/prodotti' e si ottiene il percorso Esempio: prodotti/abc123.jpg
+            $percorso = $request->file('immagine')->store('immagini', 'public');
+            $dati['immagine_path'] = $percorso;
+        }
+        Prodotto::create($dati);
         return redirect()->route('prodotto.lista');
     }
 
@@ -65,6 +94,16 @@ class ProdottoController
     public function mostraListaMalSolProdotto($prodotto_id)
     {
         $malfunzionamenti = Malsol::where('prodotto_id', $prodotto_id)->get();
+        //TODO da paginare???
+        return view('lista-mal-prodotto')->with('malfunzionamenti', $malfunzionamenti)->with('prodotto_id', $prodotto_id);
+    }
+
+    #Metodo per mostrare una lista di malfunzionamenti del prodotto tramite un termine di ricerca
+    public function mostraListaMalSolProdottoRicerca(Request $request, $prodotto_id)
+    {
+        $parola = $request->ricerca;
+        $malfunzionamenti = Malsol::where('prodotto_id', $prodotto_id)->where('mal', 'LIKE', '%' . $parola . '%')->get();
+        //TODO da paginare???
         return view('lista-mal-prodotto')->with('malfunzionamenti', $malfunzionamenti)->with('prodotto_id', $prodotto_id);
     }
 
@@ -87,6 +126,7 @@ class ProdottoController
     {
         $malsol = Malsol::findOrFail($id);
         $malsol->update([
+            'titolo'   => $request->input('titolo'),
             'mal'   => $request->input('mal'),
             'sol' => $request->input('sol'),
         ]);
@@ -111,7 +151,9 @@ class ProdottoController
     #Metodo per creare nel DB un nuovo malsol associato al prodotto
     public function creaMalSol(Request $request)
     {
+        #dd($request);
         $validated = $request->validate([
+            'titolo'      => 'required|string',
             'mal'         => 'required|string',
             'sol'         => 'required|string',
             'prodotto_id' => 'required|exists:prodotti,id',
@@ -120,5 +162,4 @@ class ProdottoController
         return redirect()->route('prodotto.mostra', $request->prodotto_id)
             ->with('success', 'Malfunzionamento salvato correttamente!');
     }
-
 }

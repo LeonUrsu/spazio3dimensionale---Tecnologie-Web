@@ -1,6 +1,7 @@
 @props(['malSol', 'prodotto_id'])
 <div>
     @if($malSol)
+    <p>titolo malfunzionamento : {{$malSol->titolo}}</p>
     <p>malfunzionamento : {{$malSol->mal}}</p>
     <p>soluzione : {{$malSol->sol}}</p>
 

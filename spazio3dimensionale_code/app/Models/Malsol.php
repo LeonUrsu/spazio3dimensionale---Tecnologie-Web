@@ -9,6 +9,7 @@ class Malsol extends Model
         protected $table = "prodotti_malsol";
 
         protected $fillable = [
+                'titolo',
                 'mal',
                 'sol',
                 'prodotto_id',
