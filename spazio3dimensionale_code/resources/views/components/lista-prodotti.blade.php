@@ -1,7 +1,5 @@
 <div>
-    <form action="{{route('home')}}">
-        <button>Indietro</button>
-    </form>
+    {{ Breadcrumbs::render() }}
     <form action="{{ route('prodotto.lista.ricerca') }}" method="GET">
         <input type="text"
             name="ricerca"

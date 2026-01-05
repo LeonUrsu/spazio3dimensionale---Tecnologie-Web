@@ -1,5 +1,6 @@
 <x-base>
     <div>
+        {{ Breadcrumbs::render() }}
         @guest
         <form action="{{route('login')}}" method=GET>
             @csrf

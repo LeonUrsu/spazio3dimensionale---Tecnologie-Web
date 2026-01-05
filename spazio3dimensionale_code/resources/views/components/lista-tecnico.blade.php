@@ -1,5 +1,6 @@
  @props(['rottaVediTecnico', 'rottaFormCreaTecnico' ,'tecnici'])
  <div>
+     {{ Breadcrumbs::render() }}
      <form action="{{route($rottaFormCreaTecnico)}}" method="GET"> <button type="submit">Crea Tecnico</button></form>
      @foreach ($tecnici as $tecnico)
      <h2>

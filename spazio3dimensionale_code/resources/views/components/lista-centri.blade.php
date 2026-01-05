@@ -1,6 +1,6 @@
 @props(['centri'])
 <div>
-
+    {{ Breadcrumbs::render() }}
     <h1>Lista dei centri disponibili per la manutenzione</h1>
     @can('isAdmin')
     <form action="{{route('centro.form.crea')}}">
