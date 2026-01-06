@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Centro;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class TecnicoCentroController
 {
-
     public function mostraListaTecnici()
     {
         $tecnici = User::latest()->where('role', 'isTecnicoCentro')->paginate(10);
@@ -41,26 +41,29 @@ class TecnicoCentroController
     # password viene modificata solamente se non è vuota
     public function aggiornaTecnico(Request $request, $id)
     {
+        $tecnico = User::findOrFail($id);
         $validated = $request->validate([
             'nome' => 'required|string|max:255',
             'cognome' => 'required|string|max:255',
-            'data_di_nascita' => 'nullable|date',
-            'email' => 'nullable|email|unique:users,email,' . $id,
+            'data_di_nascita' => 'required|date_format:d-m-Y',
+            'email' => 'required|email|unique:users,email,' . $id,
             'username' => 'required|string|min:4|unique:users,username,' . $id,
-            'centro_id' => 'nullable|exists:centri,id',
+            'centro_id' => 'required|exists:centri,id',
             'password' => 'nullable|min:6',
         ]);
-        $tecnico = User::findOrFail($id);
-        $tecnico->nome = $validated['nome'];
-        $tecnico->cognome = $validated['cognome'];
-        $tecnico->data_di_nascita = $validated['data_di_nascita'];
-        $tecnico->email = $validated['email'];
-        $tecnico->username = $validated['username'];
-        $tecnico->centro_id = $validated['centro_id'];
-        if ($validated['password']) {
-            $tecnico->password = bcrypt($validated['password']);
+        $dati = $validated;
+        try {
+            $dati['data_di_nascita'] = Carbon::createFromFormat('d-m-Y', $validated['data_di_nascita'])
+                ->format('Y-m-d');
+        } catch (\Exception $e) {
+            return back()->withErrors(['data_di_nascita' => 'Formato data non valido. Usa GG-MM-AAAA']);
         }
-        $tecnico->save();
+        if (!empty($validated['password'])) {
+            $dati['password'] = bcrypt($validated['password']);
+        } else {
+            unset($dati['password']);
+        }
+        $tecnico->update($dati);
         return redirect()->route('tecnico.centro.lista')->with('info', 'Tecnico aggiornato correttamente!');
     }
 
@@ -70,15 +73,20 @@ class TecnicoCentroController
         $validated = $request->validate([
             'nome' => 'required|string|max:255',
             'cognome' => 'required|string|max:255',
-            'data_di_nascita' => 'nullable|date',
-            'email' => 'nullable|email|unique:users,email',
+            'data_di_nascita' => 'required|date_format:d-m-Y',
+            'email' => 'required|email|unique:users,email',
             'username' => 'required|string|min:4|unique:users,username',
             'centro_id' => 'required|exists:centri,id',
-            'password' => 'required|min:6',
+            'password' => 'required|min:6', 
         ]);
-        $validated['role'] = 'isTecnicoCentro';
-        User::create($validated);
-        return redirect()->route('tecnico.centro.lista')->with('success', 'Tecnico creato con successo!');
+        $dati = $validated;
+        $dati['data_di_nascita'] = Carbon::createFromFormat('d-m-Y', $validated['data_di_nascita'])
+            ->format('Y-m-d');
+        $dati['password'] = bcrypt($validated['password']);
+        $dati['role'] = 'isTecnicoCentro';
+        User::create($dati);
+        return redirect()->route('tecnico.centro.lista')
+            ->with('info', 'Tecnico creato con successo!');
     }
 
     #Metodo per cancellare un tencnico centro dal db

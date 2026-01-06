@@ -18,7 +18,8 @@
         </form>
         </p>
         <p>
-        <form action="{{route('centro.cancella', $centro->id)}}">
+        <form action="{{route('centro.cancella', $centro->id)}}" method="POST">
+            @method('DELETE')
             <button>Elimina</button>
         </form>
         </p>

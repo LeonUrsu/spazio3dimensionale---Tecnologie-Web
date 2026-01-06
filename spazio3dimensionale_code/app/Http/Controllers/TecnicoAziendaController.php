@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class TecnicoAziendaController
 {
@@ -29,29 +30,35 @@ class TecnicoAziendaController
         return view("form-aggiorna-tecnico-azienda")->with("tecnico", $tecnico);
     }
 
-    #Metodo per aggiornare il tecnico nel DB una volta inseriti/modificati i dati nella form di modifica 
+    #Metodo per aggiornare il tecnico nel DB una volta inseriti/modificati i dati nella form di modifica, la 
+    # password viene modificata solamente se non è vuota
     public function aggiornaTecnico(Request $request, $id)
     {
-        // 1. Trova il tecnico esistente
         $tecnico = User::findOrFail($id);
-
-        // 2. Aggiorna i campi
-        $tecnico->nome = $request->nome;
-        $tecnico->cognome = $request->cognome;
-        $tecnico->data_di_nascita = $request->data_di_nascita;
-        $tecnico->email = $request->email;
-        $tecnico->username = $request->username;
-
-        // 3. Logica speciale per la password:
-        // La cambiamo solo se il campo nel form non è vuoto
-        if ($request->filled('password')) {
-            $tecnico->password = bcrypt($request->password);
+        $validated = $request->validate([
+            'nome' => 'required|string|max:255',
+            'cognome' => 'required|string|max:255',
+            'data_di_nascita' => 'required|date_format:d-m-Y',
+            'email' => 'required|email|unique:users,email,' . $id,
+            'username' => 'required|string|min:4|unique:users,username,' . $id,
+            'password' => 'nullable|min:6',
+        ]);
+        $dati = $validated;
+        try {
+            $dati['data_di_nascita'] = Carbon::createFromFormat('d-m-Y', $validated['data_di_nascita'])
+                ->format('Y-m-d');
+        } catch (\Exception $e) {
+            return back()->withErrors(['data_di_nascita' => 'Formato data non valido. Usa GG-MM-AAAA']);
         }
-
-        $tecnico->save();
+        if (!empty($validated['password'])) {
+            $dati['password'] = bcrypt($validated['password']);
+        } else {
+            unset($dati['password']);
+        }
+        $dati['role'] = 'isTecnicoAzienda';
+        $tecnico->update($dati);
         return redirect()->route('tecnico.azienda.lista')->with('info', 'Tecnico aggiornato correttamente!');
     }
-
 
     public function mostraListaAssegna(): string
     {
@@ -73,13 +80,18 @@ class TecnicoAziendaController
     public function creaTecnico(Request $request)
     {
         $validated = $request->validate([
-            'nome' => 'required|string',
-            'cognome' => 'required|string',
+            'nome' => 'required|string|max:255',
+            'cognome' => 'required|string|max:255',
+            'data_di_nascita' => 'nullable|date_format:d-m-Y',
             'email' => 'nullable|email|unique:users,email',
-            'username' => 'required|min:4',
-            'password' => 'required|min:6'
+            'username' => 'required|string|min:4|unique:users,username',
+            'password' => 'required|min:6',
         ]);
+        if ($request->filled('data_di_nascita')) {
+            $validated['data_di_nascita'] = \Carbon\Carbon::createFromFormat('d-m-Y', $request->data_di_nascita)->format('Y-m-d');
+        }
         $validated['role'] = 'isTecnicoAzienda';
+        $validated['password'] = bcrypt($validated['password']);
         User::create($validated);
         return redirect()->route('tecnico.azienda.lista')->with('success', 'Tecnico creato con successo!');
     }

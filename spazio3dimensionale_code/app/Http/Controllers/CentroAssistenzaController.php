@@ -62,9 +62,9 @@ class CentroAssistenzaController
     }
 
     #Meotdo per cancellare l'oggetto dalla tabella nel DB
-    public function cancellaCentri(): string
+    public function cancellaCentro($centro_id)
     {
-        //TODO da attivare Centro::destroy($id);
+        Centro::destroy($centro_id);
         return redirect()->route('centro.lista');
     }
 }

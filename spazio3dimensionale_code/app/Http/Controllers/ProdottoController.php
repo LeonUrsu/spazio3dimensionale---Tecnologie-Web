@@ -17,14 +17,14 @@ class ProdottoController
     {
         $parola = $request->input('ricerca'); //recupero della parola dal campo ''desc
         if (empty(trim($parola))) {
-            $prodotti = Prodotto::paginate(10);
+            $prodotti = Prodotto::latest()->paginate(10);
             return view('lista-prodotti', compact('prodotti'))->with('parola', '');
         }
         if (str_ends_with($parola, '*')) {
             $base = rtrim($parola, '*');
-            $prodotti = Prodotto::where('descrizione', 'LIKE', '%' . $base . '%')->paginate(10);
+            $prodotti = Prodotto::latest()->where('descrizione', 'LIKE', '%' . $base . '%')->paginate(10);
         } else {
-            $prodotti = Prodotto::where('descrizione', 'REGEXP', '[[:<:]]' . $parola . '[[:>:]]')->paginate(10);   // dobbiamo cercare "lav" come parola isolata (non dentro altre parole)
+            $prodotti = Prodotto::latest()->where('descrizione', 'REGEXP', '[[:<:]]' . $parola . '[[:>:]]')->paginate(10);   // dobbiamo cercare "lav" come parola isolata (non dentro altre parole)
         }
         return view('lista-prodotti')->with("prodotti", $prodotti);
     }
