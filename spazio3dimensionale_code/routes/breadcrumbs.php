@@ -23,6 +23,12 @@ Breadcrumbs::for('prodotto.mostra', function (BreadcrumbTrail $trail, $prodotto)
     $trail->push('articolo', route('prodotto.mostra', $prodotto->id));
 });
 
+// Home > Prodotti > [Nome Prodotto] > Malfunzionamento
+Breadcrumbs::for('prodotto.malsol.lista', function (BreadcrumbTrail $trail, $prodotto) {
+    $trail->parent('prodotto.mostra', $prodotto->id);
+    $trail->push('articolo', route('prodotto.malsol.lista', $prodotto->id));
+});
+
 // Home > [Lista Centri]
 Breadcrumbs::for('centro.lista', function (BreadcrumbTrail $trail) {
     $trail->parent('home');

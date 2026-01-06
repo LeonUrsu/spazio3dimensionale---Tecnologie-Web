@@ -1,6 +1,6 @@
 @props(['malfunzionamenti', 'prodotto_id'])
 <div>
-    {{ Breadcrumbs::render() }}
+    {{ Breadcrumbs::render('prodotto.malsol.lista') }}
     <form action="{{ route('prodotto.malsol.lista.ricerca', $prodotto_id) }}" method="GET">
         <input type="text"
             name="ricerca"
