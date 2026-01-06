@@ -1,6 +1,6 @@
-@props(['malSol', 'prodotto_id'])
+@props(['malSol', 'prodotto'])
 <div>
-    {{ Breadcrumbs::render('prodotto.malsol.mostra', $malSol) }}
+    {{ Breadcrumbs::render('prodotto.malsol.mostra', $prodotto, $malSol) }}
     @if($malSol)
     <p>titolo malfunzionamento : {{$malSol->titolo}}</p>
     <p>malfunzionamento : {{$malSol->mal}}</p>

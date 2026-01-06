@@ -21,7 +21,6 @@
         <button type="submit">aggiorna Prodotto</button>
     </form>
     @endcan
-
     @canany(['isTecnicoCentro', 'isTecnicoAzienda'])
     <form action="{{route('prodotto.malsol.lista', $prodotto->id)}}" method=GET>
         <button>Visualizza Malfunzionamenti</button>

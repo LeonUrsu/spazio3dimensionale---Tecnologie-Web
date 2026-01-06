@@ -1,7 +1,7 @@
-@props(['malfunzionamenti', 'prodotto_id'])
+@props(['malfunzionamenti', 'prodotto'])
 <div>
-    {{ Breadcrumbs::render('prodotto.malsol.lista') }}
-    <form action="{{ route('prodotto.malsol.lista.ricerca', $prodotto_id) }}" method="GET">
+    {{ Breadcrumbs::render('prodotto.malsol.lista', $prodotto) }}
+    <form action="{{ route('prodotto.malsol.lista', $prodotto->id) }}" method="GET">
         <input type="text"
             name="ricerca"
             placeholder="Cerca termine nella descrizione ..."
@@ -14,7 +14,7 @@
     </form>
     <p>Lista dei Malfunzionamenti:</p>
     @can('isTecnicoAzienda')
-    <form action="{{route('prodotto.form.crea.malsol', $prodotto_id)}}">
+    <form action="{{route('prodotto.form.crea.malsol', $prodotto->id)}}">
         <button type="submit"> Crea Nuovo</button>
     </form>
     @endcan
@@ -22,7 +22,7 @@
     <div>
         <p> Titolo : {{$mal->titolo}}</p>
         <p> Descrizione : {{$mal->mal}}</p>
-        <form action="{{route('prodotto.malsol.mostra', $mal)}}" method="GET">
+        <form action="{{route('prodotto.malsol.mostra', $prodotto->id)}}" method="GET">
             <button type="submit">Vedi dettagli</button>
         </form>
     </div>

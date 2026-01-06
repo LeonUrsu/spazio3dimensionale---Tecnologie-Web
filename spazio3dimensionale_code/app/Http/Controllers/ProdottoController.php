@@ -32,7 +32,7 @@ class ProdottoController
     #Metodo per trovare mostrare il prodotto all'utente
     public function mostraProdotto($id)
     {
-        $prodotto = Prodotto::find($id);
+        $prodotto = Prodotto::findOrFail($id);
         return view('mostra-prodotto')->with("prodotto", $prodotto);
     }
 
@@ -100,11 +100,15 @@ class ProdottoController
     }
 
     #Metodo per mostrare una lista di malfunzionamenti del prodotto
-    public function mostraListaMalSolProdotto($prodotto_id)
+    public function mostraListaMalSolProdotto(Request $request, $prodotto_id)
     {
-        $malfunzionamenti = Malsol::where('prodotto_id', $prodotto_id)->get();
+        /*         $malfunzionamenti = Malsol::where('prodotto_id', $prodotto_id)->get();
         //TODO da paginare???
-        return view('lista-mal-prodotto')->with('malfunzionamenti', $malfunzionamenti)->with('prodotto_id', $prodotto_id);
+        return view('lista-mal-prodotto')->with('malfunzionamenti', $malfunzionamenti)->with('prodotto_id', $prodotto_id); */
+        $parola = $request->ricerca;
+        $malfunzionamenti = Malsol::where('prodotto_id', $prodotto_id)->where('mal', 'LIKE', '%' . $parola . '%')->get();
+        $prodotto = Prodotto::findOrFail($prodotto_id);
+        return view('lista-mal-prodotto')->with('malfunzionamenti', $malfunzionamenti)->with('prodotto', $prodotto);
     }
 
     #Metodo per mostrare una lista di malfunzionamenti del prodotto tramite un termine di ricerca
@@ -120,7 +124,8 @@ class ProdottoController
     public function mostraMalSolProdotto($prodotto_id)
     {
         $malSol = Malsol::findOrFail($prodotto_id);
-        return view('mostra-mal-sol-prodotto')->with('malSol', $malSol)->with('prodotto_id', $prodotto_id);
+        $prodotto = Prodotto::findOrFail($prodotto_id);
+        return view('mostra-mal-sol-prodotto')->with('malSol', $malSol)->with('prodotto', $prodotto);
     }
 
     #Metodo per mostrare un form aggiorna malsol 
@@ -160,7 +165,6 @@ class ProdottoController
     #Metodo per creare nel DB un nuovo malsol associato al prodotto
     public function creaMalSol(Request $request)
     {
-        #dd($request);
         $validated = $request->validate([
             'titolo'      => 'required|string',
             'mal'         => 'required|string',
