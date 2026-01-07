@@ -17,8 +17,8 @@
         <p> Vineni a trovarci in: {{ config('azienda.indirizzo') }} </p>
         <p> Orari a: {{ config('azienda.orari') }} </p>
         <p> Developer a: {{ config('azienda.developer') }} </p>
-        <p>Informazioni del sito da mettere forse caricate da un file config</p>
-        <p>esame 2025 spazio3dimensionale </p>
+        <p>//TODO Mettere Qui il link per la documentazione</p>
+        <p>esame Tecnologie Web pazio3dimensionale </p>
     </footer>
 </body>
 

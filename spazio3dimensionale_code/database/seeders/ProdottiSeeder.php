@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Prodotto;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class ProdottiSeeder extends Seeder
 {
@@ -13,6 +14,23 @@ class ProdottiSeeder extends Seeder
      */
     public function run(): void
     {
+        //seeding delle foto
+        $pathDestinazione = storage_path('app/public/immagini');
+        $pathSeed = storage_path('app/public/seed');
+
+        if (File::exists($pathDestinazione)) {
+            File::cleanDirectory($pathDestinazione);
+        } else {
+            File::makeDirectory($pathDestinazione, 0755, true);
+        }
+
+        // COPIA IMMAGINI
+        if (File::exists($pathSeed)) {
+            File::copyDirectory($pathSeed, $pathDestinazione);
+            $this->command->info("Immagini caricate nello storage.");
+        }
+
+
         Prodotto::create([
             'immagine_path' => '1.jpg',
             'marca' => 'TreDimensionale',
@@ -208,24 +226,6 @@ class ProdottiSeeder extends Seeder
             'volume_stampa' => '15x15x15[cm^3]',
         ]);
 
-        // Usiamo percorsi relativi a storage/app/
-        $cartellaDestinazione = 'public/immagini';
-        $cartellaSeed = 'public/seed';
 
-        // Forza l'uso del disco 'local' per essere sicuri dei percorsi
-        Storage::disk('local')->deleteDirectory($cartellaDestinazione);
-        Storage::disk('local')->makeDirectory($cartellaDestinazione);
-
-        $files = Storage::disk('local')->files($cartellaSeed);
-
-        if (empty($files)) {
-            $this->command->error("Nessun file trovato in: storage/app/" . $cartellaSeed);
-            return;
-        }
-
-        foreach ($files as $file) {
-            $nomeFile = basename($file);
-            Storage::disk('local')->copy($file, $cartellaDestinazione . '/' . $nomeFile);
-        }
     }
 }
