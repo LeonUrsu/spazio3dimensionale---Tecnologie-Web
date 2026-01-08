@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6;
+}
+
 body {
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     line-height: 1.6;
@@ -6,20 +12,74 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    min-height: 100vh;
 }
 
-.site-wrapper {
-    display: flex;
+header {
+    background-color: #101820;
+    height: 70px;
+    width: 100dvw;
+}
+
+main {
+    height: calc(100dvh - 150px - 70px);
+}
+
+footer {
+    background-color: dimgray;
+    font-size: 13px;
+    height: 150px;
+    padding: 8px, 32px;
+    line-height: 0.6;
+}
+
+.container {
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
     flex-direction: column;
-    min-height: 100vh;
-    /* Tutta l'altezza dello schermo */
+    align-items: center;
 }
 
-
+button {
+    background-color: #b1a9a9;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+}
 
 .nav-links {
     list-style: none;
     display: flex;
     gap: 20px;
+}
+
+.home-element {
+    padding: 8px;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 3px 3px 10px rgb(97, 94, 94);
+}
+
+.menu-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.site-logo {
+    position: left;
+    height: 70px;
+    width: auto;
+    display: block;
 }
