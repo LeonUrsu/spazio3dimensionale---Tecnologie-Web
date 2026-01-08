@@ -3,14 +3,16 @@
 
 <head>
     <title>Spazio3Dimensionale</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 
 <body>
+    <header>
+    
+    </header>
     <main>
         {{ $slot }}
     </main>
-    <br>
     <footer>
         <p> Chiamaci a: {{ config('azienda.telefono') }} </p>
         <p> Scrivici a: {{ config('azienda.email') }} </p>
