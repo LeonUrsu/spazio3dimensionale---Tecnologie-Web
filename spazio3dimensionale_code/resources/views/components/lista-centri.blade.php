@@ -1,33 +1,34 @@
 @props(['centri'])
 <div>
-    {{ Breadcrumbs::render() }}
-    <h1>Lista dei centri disponibili per la manutenzione</h1>
-    @can('isAdmin')
-    <form action="{{route('centro.form.crea')}}">
-        <button>Crea Nuovo Centro Di Assistenza</button>
-    </form>
-    @endcan
-    @foreach ($centri as $centro )
     <div>
-        <h3 class="nome_centro">centro: {{$centro->nome}}</h3>
-        <h3 class="indirizzo_centro">indirizzo centro : {{$centro->città}}, {{$centro->via}} {{$centro->civico}}</h3>
-        @can('isAdmin')
-        <p>
-        <form action="{{route('centro.form.aggiorna', $centro->id)}}">
-            <button>Modifica</button>
-        </form>
-        </p>
-        <p>
-        <form action="{{route('centro.cancella', $centro->id)}}" method="POST">
-            @method('DELETE')
-            <button>Elimina</button>
-        </form>
-        </p>
-        @endcan
-        <br>
+        {{ Breadcrumbs::render() }}
     </div>
-    @endforeach
-    <div>
+    <h1>Lista dei centri disponibili per la manutenzione</h1>
+    <div class="lista">
+        @can('isAdmin')
+        <form action="{{route('centro.form.crea')}}">
+            <button>Crea Nuovo</button>
+        </form>
+        @endcan
+        @foreach ($centri as $centro )
+        <div class="element">
+            <p class="nome_centro">{{$centro->nome}}</p>
+            <p class="indirizzo_centro">indirizzo : {{$centro->città}}, {{$centro->via}} {{$centro->civico}}</p>
+            @can('isAdmin')
+            <div class="button-vicici">
+                <form action="{{route('centro.form.aggiorna', $centro->id)}}">
+                    <button>Modifica</button>
+                </form>
+                <form action="{{route('centro.cancella', $centro->id)}}" method="POST">
+                    @method('DELETE')
+                    <button>Elimina</button>
+                </form>
+            </div>
+            @endcan
+        </div>
+        @endforeach
+    </div>
+    <div class="d-flex justify-content-center mt-4">
         {{ $centri->links() }}
     </div>
 </div>

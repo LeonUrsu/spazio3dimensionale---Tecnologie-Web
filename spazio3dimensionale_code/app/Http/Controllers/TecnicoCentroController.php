@@ -19,7 +19,8 @@ class TecnicoCentroController
     public function mostraTecnico($id)
     {
         $tecnico = User::where("id", $id)->first();
-        return view('mostra-tecnico-centro')->with("tecnico", $tecnico);
+        $centro = Centro::find($tecnico->centro_id);
+        return view('mostra-tecnico-centro')->with(["tecnico" => $tecnico,"nomeCentro" => $centro?->nome ?? 'Centro non assegnato']);
     }
 
     #Metodo per mostrare la form di creazione del tecnico
@@ -77,7 +78,7 @@ class TecnicoCentroController
             'email' => 'required|email|unique:users,email',
             'username' => 'required|string|min:4|unique:users,username',
             'centro_id' => 'required|exists:centri,id',
-            'password' => 'required|min:6', 
+            'password' => 'required|min:6',
         ]);
         $dati = $validated;
         $dati['data_di_nascita'] = Carbon::createFromFormat('d-m-Y', $validated['data_di_nascita'])

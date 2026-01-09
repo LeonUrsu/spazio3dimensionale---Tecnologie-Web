@@ -1,20 +1,24 @@
  @props(['rottaVediTecnico', 'rottaFormCreaTecnico' ,'tecnici'])
- <div>
-     {{ Breadcrumbs::render() }}
+ <div class="lista">
+     <div>
+         {{ Breadcrumbs::render() }}
+     </div>
      <form action="{{route($rottaFormCreaTecnico)}}" method="GET"> <button type="submit">Crea Tecnico</button></form>
      @foreach ($tecnici as $tecnico)
-     <h2>
-         <h4>id : {{$tecnico->id}}</h4>
-         <h4>nome : {{$tecnico->nome}}</h4>
-         <h4>cognome : {{$tecnico->cognome}}</h4>
-         <form action="{{route($rottaVediTecnico, $tecnico->id)}}" method="GET">
-             <button type="submit">Vedi</button>
-         </form>
-
-     </h2>
-     <br>
+     <div class="element element_with_button">
+         <div>
+             <h6>nome : {{$tecnico->nome}}</h6>
+             <h6>cognome : {{$tecnico->cognome}}</h6>
+             <p>id tecnico : {{$tecnico->id}}</p>
+         </div>
+         <div>
+             <form action="{{route($rottaVediTecnico, $tecnico->id)}}" method="GET">
+                 <button type="submit">Vedi</button>
+             </form>
+         </div>
+     </div>
      @endforeach
-     <div>
+     <div class="d-flex justify-content-center mt-4">
          {{ $tecnici->links() }}
      </div>
  </div>

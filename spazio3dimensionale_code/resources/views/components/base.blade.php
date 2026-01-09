@@ -3,17 +3,19 @@
 
 <head>
     <title>Spazio3Dimensionale</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 
 <body>
-    <header class="container">
-        <nav class="menu-box">
-            <div class="logo-container">
-                <a href="/">
-                    <img src="{{ asset('images/logo_spazio3Dimensionale.png') }}" alt="Logo Spazio3D" class="site-logo">
-                </a>
-            </div>
+    <header class="container container-header">
+        <div class="logo-container">
+            <a href="/">
+                <img src="{{ asset('images/logo_spazio3Dimensionale.png') }}" alt="Logo Spazio3D" class="site-logo">
+            </a>
+        </div>
+        <div class="menu-box">
             <form action="{{route('centro.lista')}}" method=GET>
                 @csrf
                 <button class="menu-button" type="submit">Centri Disponibili</button>
@@ -46,20 +48,22 @@
                 <button type="submit">Logout</button>
             </form>
             @endauth
-
-        </nav>
+        </div>
     </header>
-    <main class="container">
+
+
+    <main class="container container-main">
         {{ $slot }}
     </main>
-    <footer class="container">
-        <p> Chiamaci a: {{ config('azienda.telefono') }} </p>
+
+    <footer class="container footer-container">
+        <p> <strong>Chiamaci a:</strong> {{ config('azienda.telefono') }} </p>
         <p> Scrivici a: {{ config('azienda.email') }} </p>
         <p> Vineni a trovarci in: {{ config('azienda.indirizzo') }} </p>
         <p> Orari a: {{ config('azienda.orari') }} </p>
+        <p><a href="{{ asset('storage/documentazione.pdf') }}" target="_blank" class="docs">Leggi la Documentazione (PDF)</a></p>
+        <p> Esame Tecnologie Web Spazio3dimensionale </p>
         <p> Developer a: {{ config('azienda.developer') }} </p>
-        <p>//TODO Mettere Qui il link per la documentazione</p>
-        <p>esame Tecnologie Web pazio3dimensionale </p>
     </footer>
 </body>
 

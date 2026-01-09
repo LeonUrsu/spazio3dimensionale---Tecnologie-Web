@@ -3,16 +3,29 @@
 {{--//TODO dopo l'esame riguardare e rimuovere tutte le informazioni sensibili dall'applicativo--}}
 {{--fare il ritorno con colore rosso su form e login--}}
 {{--//TODO se c'è tempo cambaire il onsubmit std del browser e metterlo personalizzato --}}
-<div>
-    <div class="container">
+<main>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <div class="login-container">
         <form action="{{route('login')}}" method="POST">
             @csrf
-            <div class="formbox" id="login-form">
+            <div class="login">
                 <h2>Login</h2>
-                <input type="text" name="username" placeholder="username">
-                <input type="text" name="password" placeholder="password">
-                <button type="submit"> Accedi </button>
+                <div>
+                    <input type="text" name="username" placeholder="Username" value="{{ old('username') }}" style="width: 100%;">
+
+                </div>
+                <div>
+                    <input type="password" name="password" placeholder="Password" style="width: 100%;">
+
+                </div>
+                @error('username')
+                <span class="error-message">{{ $message }}</span>
+                @enderror
+                @error('password')
+                <span class="error-message">{{ $message }}</span>
+                @enderror
+                <button type="submit" style="width: 100%;"> Accedi </button>
             </div>
         </form>
     </div>
-</div>
+</main>

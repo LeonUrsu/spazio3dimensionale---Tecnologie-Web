@@ -1,54 +1,159 @@
 * {
     margin: 0;
     padding: 0;
-    background-color: #f4f7f6;
+    scrollbar-gutter: stable;
 }
 
 body {
+    background-color: rgb(250, 245, 245);
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-size: 13px;
     line-height: 1.6;
-    background-color: #f4f7f6;
-    color: #333;
+    min-height: 100vh;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
 }
 
 header {
-    background-color: #101820;
-    height: 70px;
-    width: 100dvw;
+    background-color: gray;
+    height: auto;
+    display: flex;
+    flex-direction: row;
 }
 
 main {
-    height: calc(100dvh - 150px - 70px);
+    background-color: rgb(240, 238, 238);
+    flex: 1;
 }
 
 footer {
-    background-color: dimgray;
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    align-items: center;
+    background-color: gray;
+    display: flex;
     font-size: 13px;
-    height: 150px;
-    padding: 8px, 32px;
-    line-height: 0.6;
+    height: auto;
+}
+
+.docs {
+    color: blue;
+    text-decoration: underline;
 }
 
 .container {
-    width: 95%;
-    max-width: 1200px;
-    margin: 0 auto;
+    /*     width: 1000px;
     padding: 0;
     flex-direction: column;
     align-items: center;
+} */
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    /* centrare il container quando lo schermo è grande */
+    padding: 0 15px;
+
+}
+
+.container-header {
+    flex-direction: row;
+}
+
+.container-main {
+    padding: 10px;
+}
+
+.element_with_button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.element_with_button_column {
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+    padding: 8px;
+    gap: 10px;
+
+    input {
+        width: 80%;
+        border: 2px solid #ccc
+    }
+
+    textarea {
+        border: 2px solid #ccc
+    }
+}
+
+
+.button-vicici {
+    display: flex;
+    justify-content: left;
+    gap: 5px;
+}
+
+.catalogo-barra {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.ricerca-crea-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.ricerca-box {
+    padding: 4px;
+    border-radius: 8px;
+    background-color: #dad3d3;
+    max-width: fit-content;
+}
+
+input {
+    border-radius: 5px;
+    width: 1;
+}
+
+.title {
+    font-size: medium;
+}
+
+.img_home {
+    max-height: 400px;
+}
+
+.subtitle {
+    font-size: small;
 }
 
 button {
+    white-space: nowrap;
     background-color: #b1a9a9;
-    padding: 10px 20px;
+    padding: 10px 15px;
+    max-width: 200px;
     border-radius: 6px;
     font-size: 14px;
     align-items: center;
     cursor: pointer;
     border: none;
+}
+
+textarea {
+    border-radius: 4px;
+    width: 80%;
+    height: 200px;
+    resize: none;
+}
+
+.textarea-titolo {
+    height: 30px;
 }
 
 .nav-links {
@@ -57,18 +162,61 @@ button {
     gap: 20px;
 }
 
-.home-element {
+.element {
     padding: 8px;
     border-radius: 8px;
     background-color: white;
-    box-shadow: 3px 3px 10px rgb(97, 94, 94);
+    box-shadow: 3px 3px 5px rgb(97, 94, 94);
+    align-items: center;
 }
 
+.annulla_left {
+    display: flex;
+    justify-content: left;
+    padding: 8px;
+}
+
+
 .menu-box {
+    width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1px;
+}
+
+.lista {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.lista-home {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+
+.titolo-centrale{
+    display: flex;
+    justify-content: center;
+}
+
+.lista-home-element {
+    display: flex;
+    flex-direction: row;
+    gap :30px;
+}
+
+.is-invalid {
+    border: 2px solid #dc3545 !important;
+    background-color: #fff8f8;
 }
 
 .logo-container {
@@ -82,4 +230,49 @@ button {
     height: 70px;
     width: auto;
     display: block;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 12px;
+    margin-top: 5px;
+    display: block;
+    font-weight: bold;
+}
+
+.login {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    /* Di base prova a essere largo */
+    max-width: 400px;
+    /* Ma non superare mai i 400px */
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 300px;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    /* Centra orizzontalmente */
+    align-items: center;
+    /* Centra verticalmente */
+    min-height: calc(100vh - 320px);
+    width: 100%;
+    /* Di base prova a essere largo */
+    max-width: 400px;
+    /* Ma non superare mai i 400px */
+    margin: 40px auto;
+    /* 100vh meno altezza header (70) e footer (250) */
+    width: 100%;
+}
+
+/* tutti i paragrafi hanno sfondo trasparente */
+p {
+    background-color: transparent;
 }

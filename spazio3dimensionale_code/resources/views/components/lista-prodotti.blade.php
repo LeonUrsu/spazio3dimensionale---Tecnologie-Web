@@ -1,22 +1,28 @@
 <div>
-    {{ Breadcrumbs::render('prodotto.lista') }}
-    <form action="{{ route('prodotto.lista') }}" method="GET" id="form-ricerca">
-        <input type="text"
-            name="ricerca"
-            placeholder="Cerca descrizione (es. lav*)..."
-            value="{{ request('ricerca') }}">
-        <button type="submit"> Cerca </button>
+    <div>
+        {{ Breadcrumbs::render('prodotto.lista') }}
+    </div>
 
-        @if(request('ricerca'))
-        <a href="{{ route('prodotto.lista') }}">Annulla</a>
-        @endif
-    </form>
-    <h1>Catalogo dei prodotti disponibili</h1>
-    @can('isAdmin')
-    <form action="{{route('prodotto.form.crea')}}">
-        <button>Aggiungi Prodotto</button>
-    </form>
-    @endcan
+    <h3>Catalogo dei prodotti disponibili: </h3>
+    <div class="catalogo-barra">
+        <form action="{{ route('prodotto.lista') }}" method="GET" id="form-ricerca" class="ricerca-box">
+            <input type="text"
+                name="ricerca"
+                placeholder="Cerca descrizione (es. lav*)..."
+                value="{{ request('ricerca') }}">
+            <button type="submit"> Cerca </button>
+
+            @if(request('ricerca'))
+            <a href="{{ route('prodotto.lista') }}">Annulla</a>
+            @endif
+        </form>
+
+        @can('isAdmin')
+        <form action="{{route('prodotto.form.crea')}}">
+            <button>Aggiungi Prodotto</button>
+        </form>
+        @endcan
+    </div>
     <br>
     <div id="risultati-lista">
         @include('partials._lista-prodotti')

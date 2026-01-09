@@ -15,6 +15,7 @@ class UtentiSeeder extends Seeder
     {
         // Creazione Admin
         User::create([
+            'data_di_nascita' => '1999-05-19',
             'role' => 'isAdmin',
             'username' => 'adminadmin',
             'password' => 'hJ9ShJ9S',
@@ -22,6 +23,7 @@ class UtentiSeeder extends Seeder
 
         // Creazione Tecnico Azienda
         User::create([
+            'data_di_nascita' => '1999-05-19',
             'role' => 'isTecnicoAzienda',
             'username' => 'staffstaff',
             'password' => 'hJ9ShJ9S',
@@ -31,6 +33,7 @@ class UtentiSeeder extends Seeder
 
         // Creazione Tecnico Centro Assistenza
         User::create([
+            'data_di_nascita' => '1999-05-19',
             'role' => 'isTecnicoCentro',
             'username' => 'tecntecn',
             'password' => 'hJ9ShJ9S',
@@ -43,6 +46,7 @@ class UtentiSeeder extends Seeder
         //Altri tecnici azienda-----------------------
         // Creazione Tecnico Azienda 1
         User::create([
+            'data_di_nascita' => '1999-05-19',
             'role' => 'isTecnicoAzienda',
             'username' => 'mrossi88',
             'password' => 'hJ9ShJ9S',
@@ -52,6 +56,7 @@ class UtentiSeeder extends Seeder
 
         // Creazione Tecnico Azienda 2
         User::create([
+            'data_di_nascita' => '1999-05-19',
             'role' => 'isTecnicoAzienda',
             'username' => 'ale_bianchi',
             'password' => 'hJ9ShJ9S',
@@ -61,6 +66,7 @@ class UtentiSeeder extends Seeder
 
         // Creazione Tecnico Azienda 3
         User::create([
+            'data_di_nascita' => '1999-05-19',
             'role' => 'isTecnicoAzienda',
             'username' => 'elena_smart',
             'password' => 'hJ9ShJ9S',
@@ -70,6 +76,7 @@ class UtentiSeeder extends Seeder
 
         // Creazione Tecnico Azienda 4
         User::create([
+            'data_di_nascita' => '1999-05-19',
             'role' => 'isTecnicoAzienda',
             'username' => 'luca_tech',
             'password' => 'hJ9ShJ9S',
@@ -79,6 +86,7 @@ class UtentiSeeder extends Seeder
 
         // Creazione Tecnico Azienda 5
         User::create([
+            'data_di_nascita' => '1999-05-19',
             'role' => 'isTecnicoAzienda',
             'username' => 'francy_lab',
             'password' => 'hJ9ShJ9S',
@@ -88,6 +96,7 @@ class UtentiSeeder extends Seeder
 
         // Creazione Tecnico Azienda 6
         User::create([
+            'data_di_nascita' => '1999-05-19',
             'role' => 'isTecnicoAzienda',
             'username' => 'rob_expert',
             'password' => 'hJ9ShJ9S',
@@ -97,6 +106,7 @@ class UtentiSeeder extends Seeder
 
         // Creazione Tecnico Azienda 7
         User::create([
+            'data_di_nascita' => '1999-05-19',
             'role' => 'isTecnicoAzienda',
             'username' => 'giulia_dev',
             'password' => 'hJ9ShJ9S',
@@ -106,6 +116,7 @@ class UtentiSeeder extends Seeder
 
         // Creazione Tecnico Azienda 8
         User::create([
+            'data_di_nascita' => '1999-05-19',
             'role' => 'isTecnicoAzienda',
             'username' => 'stefano_pro',
             'password' => 'hJ9ShJ9S',
@@ -115,6 +126,7 @@ class UtentiSeeder extends Seeder
 
         // Creazione Tecnico Azienda 9
         User::create([
+            'data_di_nascita' => '1999-05-19',
             'role' => 'isTecnicoAzienda',
             'username' => 'marti_field',
             'password' => 'hJ9ShJ9S',
@@ -124,6 +136,7 @@ class UtentiSeeder extends Seeder
 
         // Creazione Tecnico Azienda 10
         User::create([
+            'data_di_nascita' => '1999-05-19',
             'role' => 'isTecnicoAzienda',
             'username' => 'andrea_sys',
             'password' => 'hJ9ShJ9S',
@@ -134,6 +147,7 @@ class UtentiSeeder extends Seeder
         //Altri tecnici centro-----------------------
         // Creazione Tecnico Centro Assistenza 1
         User::create([
+            'data_di_nascita' => '1999-05-19',
             'role' => 'isTecnicoCentro',
             'username' => 'f.serra82',
             'password' => 'hJ9ShJ9S',
@@ -144,6 +158,7 @@ class UtentiSeeder extends Seeder
 
         // Creazione Tecnico Centro Assistenza 2
         User::create([
+            'data_di_nascita' => '1999-05-19',
             'role' => 'isTecnicoCentro',
             'username' => 'marta_fix',
             'password' => 'hJ9ShJ9S',
@@ -154,6 +169,7 @@ class UtentiSeeder extends Seeder
 
         // Creazione Tecnico Centro Assistenza 3
         User::create([
+            'data_di_nascita' => '1999-05-19',
             'role' => 'isTecnicoCentro',
             'username' => 'simone_rep',
             'password' => 'hJ9ShJ9S',
@@ -164,6 +180,7 @@ class UtentiSeeder extends Seeder
 
         // Creazione Tecnico Centro Assistenza 4
         User::create([
+            'data_di_nascita' => '1999-05-19',
             'role' => 'isTecnicoCentro',
             'username' => 'claudia_tech',
             'password' => 'hJ9ShJ9S',
@@ -174,6 +191,7 @@ class UtentiSeeder extends Seeder
 
         // Creazione Tecnico Centro Assistenza 5
         User::create([
+            'data_di_nascita' => '1999-05-19',
             'role' => 'isTecnicoCentro',
             'username' => 'davide_service',
             'password' => 'hJ9ShJ9S',
@@ -184,6 +202,7 @@ class UtentiSeeder extends Seeder
 
         // Creazione Tecnico Centro Assistenza 6
         User::create([
+            'data_di_nascita' => '1999-05-19',
             'role' => 'isTecnicoCentro',
             'username' => 'sara_maint',
             'password' => 'hJ9ShJ9S',
@@ -194,6 +213,7 @@ class UtentiSeeder extends Seeder
 
         // Creazione Tecnico Centro Assistenza 7
         User::create([
+            'data_di_nascita' => '1999-05-19',
             'role' => 'isTecnicoCentro',
             'username' => 'pietro_lab',
             'password' => 'hJ9ShJ9S',
@@ -204,6 +224,7 @@ class UtentiSeeder extends Seeder
 
         // Creazione Tecnico Centro Assistenza 8
         User::create([
+            'data_di_nascita' => '1999-05-19',
             'role' => 'isTecnicoCentro',
             'username' => 'anna_expert',
             'password' => 'hJ9ShJ9S',
@@ -214,6 +235,7 @@ class UtentiSeeder extends Seeder
 
         // Creazione Tecnico Centro Assistenza 9
         User::create([
+            'data_di_nascita' => '1999-05-19',
             'role' => 'isTecnicoCentro',
             'username' => 'matteo_core',
             'password' => 'hJ9ShJ9S',
@@ -224,6 +246,7 @@ class UtentiSeeder extends Seeder
 
         // Creazione Tecnico Centro Assistenza 10
         User::create([
+            'data_di_nascita' => '1999-05-19',
             'role' => 'isTecnicoCentro',
             'username' => 'elisa_check',
             'password' => 'hJ9ShJ9S',

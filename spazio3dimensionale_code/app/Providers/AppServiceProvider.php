@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,33 +22,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //sacrifico la velocità in favore della leggibilità
+        Paginator::useBootstrapFive(); //serve per mostrare correttamente le paginazioni
 
-        //TODO
-        //questo codice serve per bypassare il login durante il test del sito, da eliminare
-        /*         Gate::before(function ($user, $ability) {
-            return true;
-        });
- */
         Gate::define('isAdmin', function (User $user) {
-            // Per ora solo true, dopo elimino
-            //return true;
-            // dopo devo mettere: 
             return $user->role === 'isAdmin';
         });
 
         Gate::define('isTecnicoAzienda', function (User $user) {
-            // Per ora solo true, dopo elimino
-            //return true;
-
-            // dopo devo mettere: 
             return $user->role === 'isTecnicoAzienda';
         });
 
         Gate::define('isTecnicoCentro', function (User $user) {
-            // Per ora solo true, dopo elimino: return true;
-
-            // dopo devo mettere: 
             return $user->role === 'isTecnicoCentro';
         });
 
