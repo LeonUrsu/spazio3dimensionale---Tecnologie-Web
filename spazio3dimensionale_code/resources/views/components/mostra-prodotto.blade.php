@@ -3,14 +3,14 @@
     <div>
         {{ Breadcrumbs::render('prodotto.mostra', $prodotto) }}
     </div>
-    <img src="{{ asset('storage/immagini/' . $prodotto->immagine_path) }}" alt="Immagine Prodotto">
+    <img src="{{ asset('storage/immagini/' . $prodotto->immagine_path) }}" alt="Immagine Prodotto" class="img_home">
     <div>Informazioni su {{$prodotto->marca}} {{$prodotto->modello}}</div>
     <div>Descrizione: {{$prodotto->descrizione}}</div>
     <div>Dimensioni: {{$prodotto->dimensioni}}</div>
-    <div>Prezzo: {{$prodotto->prezzo}}</div>
-    <div>Peso: {{$prodotto->peso}}</div>
+    {{--<div>Prezzo: {{$prodotto->prezzo}}</div>--}}
+    <div>Peso [kg]: {{$prodotto->peso}}</div>
     <div>Consumo Watt: {{$prodotto->consumo_watt}}</div>
-    <div>Volume di stampa: {{$prodotto->volume_stampa}}</div>
+    <div>Volume di stampa [cm x cm x cm] : {{$prodotto->volume_stampa}}</div>
     <div>Modalità di installazione: {{$prodotto->modalità_installazione}}</div>
 
     @can('isAdmin')

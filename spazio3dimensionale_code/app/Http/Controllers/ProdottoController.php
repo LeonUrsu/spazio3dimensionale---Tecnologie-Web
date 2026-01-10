@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\File;
 class ProdottoController
 {
 
-/* 
+    /* 
     //TODO da sistemare e da riprogettare
     #Metodo per mostrare un catalogo dei prodotti all'utente filtrati tramite un termine di ricerca o un temine di ricerca parziale
     public function mostraListaProdotti(Request $request)
@@ -77,8 +77,18 @@ class ProdottoController
     # se presente nella request mentre la vecchia viene eliminata
     public function aggiornaProdotto(Request $request, $id)
     {
+        $validated = $request->validate([
+            'marca' => 'required|string|max:50',
+            'modello' => 'required|string|max:100',
+            'descrizione' => 'required|string|min:10',
+            'modalità_installazione' => 'nullable|string',
+            'dimensioni' => 'nullable|string|max:50',
+            'peso' => 'nullable|numeric|max:20',
+            'consumo_watt' => 'nullable|numeric',
+            'volume_stampa' => 'nullable|string|max:50',
+        ]);
         $prodotto = Prodotto::findOrFail($id);
-        $dati = $request->all();    //TODO da validare
+;    
         if ($request->hasFile('immagine')) {
             $vecchioPercorso = public_path('storage/immagini' . $prodotto->immagine);
             if (File::exists($vecchioPercorso) && !empty($prodotto->immagine)) {
@@ -87,12 +97,12 @@ class ProdottoController
             $file_caricato = $request->file('immagine');
             $nomeImmagine = time() . '.' . $file_caricato->getClientOriginalExtension();
             $file_caricato->move(public_path('storage/immagini'), $nomeImmagine);
-            $dati['immagine_path'] = $nomeImmagine;
+            $validated['immagine_path'] = $nomeImmagine;
         } else {
             unset($dati['immagine']);
         }
         $prodotto = Prodotto::findOrFail($id);
-        $prodotto->update($dati);
+        $prodotto->update($validated);
         return redirect()->route('prodotto.lista');
     }
 
@@ -105,15 +115,24 @@ class ProdottoController
     #Metodo per creare all'interno del DB un prodotto con dati compilati attraverso il web form
     public function creaProdotto(Request $request)
     {
-        //TODO da validare
-        $dati = $request->all();
+        $validated = $request->validate([
+            'immagine' => 'required|image|mimes:jpeg,png,jpg,gif',
+            'marca' => 'required|string|max:50',
+            'modello' => 'required|string|max:100',
+            'descrizione' => 'required|string|min:10',
+            'modalità_installazione' => 'nullable|string',
+            'dimensioni' => 'nullable|string|max:50',
+            'peso' => 'nullable|string|max:20',
+            'consumo_watt' => 'nullable|string',
+            'volume_stampa' => 'nullable|string|max:50',
+        ]);
         if ($request->hasFile('immagine')) {
             $file_caricato = $request->file('immagine');
             $nomeImmagine = time() . '.' . $file_caricato->getClientOriginalExtension();
             $file_caricato->move(public_path('storage/immagini'), $nomeImmagine);
-            $dati['immagine_path'] = $nomeImmagine;
+            $validated['immagine_path'] = $nomeImmagine;
         }
-        Prodotto::create($dati);
+        Prodotto::create($validated);
         return redirect()->route('prodotto.lista');
     }
 

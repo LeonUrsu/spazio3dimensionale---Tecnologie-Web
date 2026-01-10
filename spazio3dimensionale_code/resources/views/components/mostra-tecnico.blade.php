@@ -5,7 +5,13 @@
     </div>
     <h4>nome : {{$tecnico->nome}}</h4>
     <h4>cognome : {{$tecnico->cognome}}</h4>
+    <h4>username : {{$tecnico->username}}</h4>
+    @if(!empty($tecnico->data_di_nascita))
     <h4>data di nascita : {{$tecnico->data_di_nascita}}</h4>
+    @endif
+    @if(!empty($tecnico->email))
+    <h4>email : {{$tecnico->email}}</h4>
+    @endif
     @if(!empty($nomeCentro))
     <h4>Centro assistenza: {{$nomeCentro}}</h4>
     @endif

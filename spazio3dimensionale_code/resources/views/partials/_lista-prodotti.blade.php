@@ -8,7 +8,7 @@
         @endif
     </div>
     <div>
-        <h6 class="nome_prodotto">{{$prodotto->marca}} {{$prodotto->modello}} - {{$prodotto->prezzo}}$</h6>
+        <h6 class="nome_prodotto">{{$prodotto->marca}} {{$prodotto->modello}} {{--{{$prodotto->prezzo}}$--}}</h6>
         <form action="{{route('prodotto.mostra', $prodotto->id)}}">
             <button>Mostra info prodotto</button>
         </form>
@@ -19,5 +19,5 @@
 <li>Nessun dato trovato.</li>
 @endforelse
 <div class="d-flex justify-content-center mt-4">
-    {{ $prodotti->links() }}
+    {{ $prodotti->withQueryString()->links() }}
 </div>

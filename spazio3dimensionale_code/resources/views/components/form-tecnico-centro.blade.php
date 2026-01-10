@@ -2,6 +2,16 @@
 {{--//TODO bisogna saper spiegare ogni parte di questo file--}}
 @props(['centri' => [],'tecnico' => null])
 <div>
+
+    <div class="lista">
+        <input type="text" name="specializzazione" placeholder="specializzazione" value="{{ old('cognome', $tecnico?->specializzazione) }}" class="@error('specializzazione') is-invalid @enderror">
+        <input type="text"
+            name="data_di_nascita"
+            placeholder="gg-mm-aaaa"
+            value="{{ old('data_di_nascita', $tecnico?->data_di_nascita ? \Carbon\Carbon::parse($tecnico->data_di_nascita)->format('d-m-Y') : '') }}" class="@error('data_di_nascita') is-invalid @enderror">
+        <input type="text" name="email" placeholder="email" value="{{ old('email', $tecnico?->email) }}" class="@error('email') is-invalid @enderror">
+    </div>
+
     <div class="scroll-box-container" style="margin: 15px 0;">
         <label style="font-weight: bold; display: block; margin-bottom: 8px;">
             Seleziona Centro Assistenza

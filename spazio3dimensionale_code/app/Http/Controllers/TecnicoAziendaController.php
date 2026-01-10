@@ -38,18 +38,11 @@ class TecnicoAziendaController
         $validated = $request->validate([
             'nome' => 'required|string|max:255',
             'cognome' => 'required|string|max:255',
-            'data_di_nascita' => 'required|date_format:d-m-Y',
-            'email' => 'required|email|unique:users,email,' . $id,
             'username' => 'required|string|min:4|unique:users,username,' . $id,
             'password' => 'nullable|min:6',
         ]);
         $dati = $validated;
-        try {
-            $dati['data_di_nascita'] = Carbon::createFromFormat('d-m-Y', $validated['data_di_nascita'])
-                ->format('Y-m-d');
-        } catch (\Exception $e) {
-            return back()->withErrors(['data_di_nascita' => 'Formato data non valido. Usa GG-MM-AAAA']);
-        }
+    
         if (!empty($validated['password'])) {
             $dati['password'] = bcrypt($validated['password']);
         } else {
@@ -57,7 +50,7 @@ class TecnicoAziendaController
         }
         $dati['role'] = 'isTecnicoAzienda';
         $tecnico->update($dati);
-        return redirect()->route('tecnico.azienda.lista')->with('info', 'Tecnico aggiornato correttamente!');
+        return redirect()->route('tecnico.azienda.mostra', $tecnico->id)->with('info', 'Tecnico aggiornato correttamente!');
     }
 
     public function mostraListaAssegna(): string

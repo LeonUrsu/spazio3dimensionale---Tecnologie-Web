@@ -61,7 +61,13 @@
         <p> Scrivici a: {{ config('azienda.email') }} </p>
         <p> Vineni a trovarci in: {{ config('azienda.indirizzo') }} </p>
         <p> Orari a: {{ config('azienda.orari') }} </p>
-        <p><a href="{{ asset('storage/documentazione.pdf') }}" target="_blank" class="docs">Leggi la Documentazione (PDF)</a></p>
+        <p>
+            <a href="{{ asset('storage/documentazione.pdf') }}" target="_blank" class="docs">Leggi la Documentazione (PDF)</a>
+        </p>
+        <p>
+            <a href="https://github.com/LeonUrsu/spazio3dimensionale-Tecnologie-Web.git" target="_blank" class="docs">Vai al progetto su GitHub</a>
+        </p>
+
         <p> Esame Tecnologie Web Spazio3dimensionale </p>
         <p> Developer a: {{ config('azienda.developer') }} </p>
     </footer>

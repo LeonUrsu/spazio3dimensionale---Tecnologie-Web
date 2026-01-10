@@ -246,9 +246,7 @@ textarea {
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     width: 100%;
-    /* Di base prova a essere largo */
     max-width: 400px;
-    /* Ma non superare mai i 400px */
     margin: 40px auto;
     display: flex;
     flex-direction: column;
@@ -259,16 +257,11 @@ textarea {
 .login-container {
     display: flex;
     justify-content: center;
-    /* Centra orizzontalmente */
     align-items: center;
-    /* Centra verticalmente */
     min-height: calc(100vh - 320px);
     width: 100%;
-    /* Di base prova a essere largo */
     max-width: 400px;
-    /* Ma non superare mai i 400px */
     margin: 40px auto;
-    /* 100vh meno altezza header (70) e footer (250) */
     width: 100%;
 }
 

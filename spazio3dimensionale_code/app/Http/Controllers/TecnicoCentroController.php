@@ -20,7 +20,7 @@ class TecnicoCentroController
     {
         $tecnico = User::where("id", $id)->first();
         $centro = Centro::find($tecnico->centro_id);
-        return view('mostra-tecnico-centro')->with(["tecnico" => $tecnico,"nomeCentro" => $centro?->nome ?? 'Centro non assegnato']);
+        return view('mostra-tecnico-centro')->with(["tecnico" => $tecnico, "nomeCentro" => $centro?->nome ?? 'Centro non assegnato']);
     }
 
     #Metodo per mostrare la form di creazione del tecnico
@@ -65,7 +65,7 @@ class TecnicoCentroController
             unset($dati['password']);
         }
         $tecnico->update($dati);
-        return redirect()->route('tecnico.centro.lista')->with('info', 'Tecnico aggiornato correttamente!');
+        return redirect()->route('tecnico.centro.mostra', $tecnico->id)->with('info', 'Tecnico aggiornato correttamente!');
     }
 
     #Metodo che crea un tecnico centro nel DB tramite la request
