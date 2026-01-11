@@ -86,7 +86,7 @@ class TecnicoAziendaController
         $validated['role'] = 'isTecnicoAzienda';
         $validated['password'] = bcrypt($validated['password']);
         User::create($validated);
-        return redirect()->route('tecnico.azienda.lista')->with('success', 'Tecnico creato con successo!');
+        return redirect()->route('tecnico.azienda.lista');
     }
 
     #Metodo per cancellare un tencnico azienda dal db

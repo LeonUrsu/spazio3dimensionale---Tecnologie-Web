@@ -49,6 +49,7 @@ class TecnicoCentroController
             'data_di_nascita' => 'required|date_format:d-m-Y',
             'email' => 'required|email|unique:users,email,' . $id,
             'username' => 'required|string|min:4|unique:users,username,' . $id,
+            'specializzazione' => 'required|string|max:255',
             'centro_id' => 'required|exists:centri,id',
             'password' => 'nullable|min:6',
         ]);
@@ -77,6 +78,7 @@ class TecnicoCentroController
             'data_di_nascita' => 'required|date_format:d-m-Y',
             'email' => 'required|email|unique:users,email',
             'username' => 'required|string|min:4|unique:users,username',
+            'specializzazione' => 'required|string|max:255',
             'centro_id' => 'required|exists:centri,id',
             'password' => 'required|min:6',
         ]);
@@ -86,8 +88,7 @@ class TecnicoCentroController
         $dati['password'] = bcrypt($validated['password']);
         $dati['role'] = 'isTecnicoCentro';
         User::create($dati);
-        return redirect()->route('tecnico.centro.lista')
-            ->with('info', 'Tecnico creato con successo!');
+        return redirect()->route('tecnico.centro.lista');
     }
 
     #Metodo per cancellare un tencnico centro dal db

@@ -18,8 +18,8 @@
                 <img src="{{ asset('storage/immagini_home/mappa.png') }}" class="img_home">
             </div>
             <div class="lista-home-element">
-                <h3><strong>Troverai {{ $n_tecnici ?? 0 }} tecnici specializzati pronti ad aiutarti</strong></h3>
                 <img src="{{ asset('storage/immagini_home/manutentore.png') }}" class="img_home">
+                <h3><strong>Troverai {{ $n_tecnici ?? 0 }} tecnici specializzati pronti ad aiutarti</strong></h3>
             </div>
         </div>
     </div>

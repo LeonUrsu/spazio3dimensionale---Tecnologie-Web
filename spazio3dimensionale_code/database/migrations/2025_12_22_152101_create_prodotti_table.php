@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('descrizione');
             $table->text('modalità_installazione');
             $table->string('dimensioni', 50);
-            $table->integer('peso', 10);
+            $table->integer('peso');
             $table->integer('consumo_watt');
             $table->string('volume_stampa', 50);
             $table->timestamps();

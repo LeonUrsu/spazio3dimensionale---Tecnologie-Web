@@ -47,7 +47,7 @@ class ProdottoController
             }
         }
 
-        $prodotti = $query->paginate(5);
+        $prodotti = $query->paginate(7);
         // Gestione AJAX
         if ($request->ajax()) {
             return view('prodotto._lista-prodotti', compact('prodotti'))->render();
@@ -83,12 +83,11 @@ class ProdottoController
             'descrizione' => 'required|string|min:10',
             'modalità_installazione' => 'nullable|string',
             'dimensioni' => 'nullable|string|max:50',
-            'peso' => 'nullable|numeric|max:20',
+            'peso' => 'nullable|numeric',
             'consumo_watt' => 'nullable|numeric',
             'volume_stampa' => 'nullable|string|max:50',
         ]);
-        $prodotto = Prodotto::findOrFail($id);
-;    
+        $prodotto = Prodotto::findOrFail($id);;
         if ($request->hasFile('immagine')) {
             $vecchioPercorso = public_path('storage/immagini' . $prodotto->immagine);
             if (File::exists($vecchioPercorso) && !empty($prodotto->immagine)) {
@@ -99,7 +98,7 @@ class ProdottoController
             $file_caricato->move(public_path('storage/immagini'), $nomeImmagine);
             $validated['immagine_path'] = $nomeImmagine;
         } else {
-            unset($dati['immagine']);
+            unset($validated['immagine']);
         }
         $prodotto = Prodotto::findOrFail($id);
         $prodotto->update($validated);
@@ -120,11 +119,11 @@ class ProdottoController
             'marca' => 'required|string|max:50',
             'modello' => 'required|string|max:100',
             'descrizione' => 'required|string|min:10',
-            'modalità_installazione' => 'nullable|string',
-            'dimensioni' => 'nullable|string|max:50',
-            'peso' => 'nullable|string|max:20',
-            'consumo_watt' => 'nullable|string',
-            'volume_stampa' => 'nullable|string|max:50',
+            'modalità_installazione' => 'required|string',
+            'dimensioni' => 'required|string|max:50',
+            'peso' => 'required|numeric',
+            'consumo_watt' => 'required|numeric',
+            'volume_stampa' => 'required|string|min:10|max:50'
         ]);
         if ($request->hasFile('immagine')) {
             $file_caricato = $request->file('immagine');
@@ -175,13 +174,15 @@ class ProdottoController
     #Metodo per aggiornare i malfunzionamenti e la soluzione associata nel DB di un prodotto attarverso un id del prodotto
     public function aggiornaMalSol(Request $request, $id)
     {
-        $malsol = Malsol::findOrFail($id);
-        $malsol->update([
-            'titolo'   => $request->input('titolo'),
-            'mal'   => $request->input('mal'),
-            'sol' => $request->input('sol'),
+        $validated = $request->validate([
+            'titolo'      => 'required|string|max:255',
+            'mal'         => 'required|string',
+            'sol'         => 'required|string',
+            'prodotto_id' => 'required|exists:prodotti,id',
         ]);
-        return redirect()->route('prodotto.malsol.mostra', $malsol->id)->with('success', 'Centro aggiornato!');
+        $malsol = Malsol::findOrFail($id);
+        $malsol->update($validated);
+        return redirect()->route('prodotto.malsol.mostra', $malsol->id);
     }
 
     #Metodo per cancellare i malfunzionamenti e la soluzione associata nel DB di un prodotto attarverso un id del prodotto
@@ -190,7 +191,7 @@ class ProdottoController
 
         $malSol = Malsol::findOrFail($id);
         $malSol->delete();
-        return redirect()->route('prodotto.malsol.lista', ['prodottoId' => $malSol->prodotto_id])->with('success', 'Centro aggiornato!');
+        return redirect()->route('prodotto.malsol.lista', ['prodottoId' => $malSol->prodotto_id]);
     }
 
     #Metodo per mostrare la form per creare il malsol del prodotto e la sua soluzione
@@ -209,7 +210,6 @@ class ProdottoController
             'prodotto_id' => 'required|exists:prodotti,id',
         ]);
         Malsol::create($validated);
-        return redirect()->route('prodotto.mostra', $request->prodotto_id)
-            ->with('success', 'Malfunzionamento salvato correttamente!');
+        return redirect()->route('prodotto.mostra', $request->prodotto_id);
     }
 }

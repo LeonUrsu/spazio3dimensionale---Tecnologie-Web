@@ -58,7 +58,7 @@ class CentroAssistenzaController
             'civico' => 'required|string|max:50',
         ]);
         Centro::create($validated);
-        return redirect()->route('centro.lista')->with('success', 'Centro aggiornato!');
+        return redirect()->route('centro.lista');
     }
 
     #Meotdo per cancellare l'oggetto dalla tabella nel DB
