@@ -1,5 +1,6 @@
-//TODO capire bene come funziona
+//TODO capire bene come funziona altrimenti ...
 
+//Metodo per gestire le funzionalità ajax, usato per l'iniezione delle componenti della lista dei prodotti del catalogo
 $(document).ready(function () {
     // Gestione della ricerca
     $('#form-ricerca').on('submit', function (e) {
