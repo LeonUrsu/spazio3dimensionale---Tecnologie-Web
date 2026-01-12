@@ -1,12 +1,12 @@
 {{--i l crea dovrebbe stare dentro il prodotto così si passa l'id prodotto da associare al malSol--}}
-@props(['action', 'malSol'=>null, 'method'=>'POST', 'prodotto_id'])
+@props(['action', 'malSol'=>null, 'method'=>'POST', 'prodotto_id', 'indietro'])
 <div class="element_with_button_column">
     <form action="{{$action}}" method="POST" class="form-conferma">
         @csrf
         @if($method == 'PUT') @method('PUT') @endif
         <input type="hidden" name="prodotto_id" value={{$prodotto_id}}>
         <div>
-            <textarea name="titolo" placeholder="titolo" class="textarea-titolo @error('titolo') is-invalid @enderror">{{ old('mal', $malSol?->titolo) }}</textarea>
+            <textarea name="titolo" placeholder="titolo" class="textarea-titolo @error('titolo') is-invalid @enderror">{{ old('titolo', $malSol?->titolo) }}</textarea>
             <label>Titolo:</label>
         </div>
         <div>
@@ -24,7 +24,9 @@
         @endif
         <button type="submit">Salva</button>
     </form>
-    <a href="{{ url()->previous() }}">
-        <button type="button">Annulla</button>
-    </a>
+    <div class="form-actions">
+        <button type="button" class="btn-annulla" onclick="window.location.href='{{ $indietro }}'">
+            Indietro
+        </button>
+    </div>
 </div>

@@ -12,6 +12,6 @@
     @empty
     <li>Nessun dato trovato.</li>
     @endforelse
-    {{--<div class="d-flex justify-content-center mt-4">
+    <div class="d-flex justify-content-center mt-4">
         {{ $malfunzionamenti->withQueryString()->links() }}
-    </div>--}}
+    </div>

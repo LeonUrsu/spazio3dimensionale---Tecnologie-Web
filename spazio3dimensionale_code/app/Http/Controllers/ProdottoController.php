@@ -14,7 +14,7 @@ class ProdottoController
     public function mostraListaProdotti(Request $request)
     {
         $parola = $request->input('ricerca');
-        $query = Prodotto::latest(); 
+        $query = Prodotto::latest();
         if (!empty(trim($parola))) {
             if (str_ends_with($parola, '*')) {
                 // Logica per ricerca parziale (es. lav*)
@@ -125,7 +125,7 @@ class ProdottoController
     public function mostraListaMalSolProdotto(Request $request, $prodotto_id)
     {
         $parola = $request->ricerca;
-        $malfunzionamenti = Malsol::latest()->where('prodotto_id', $prodotto_id)->where('mal', 'LIKE', '%' . $parola . '%')->get();
+        $malfunzionamenti = Malsol::latest()->where('prodotto_id', $prodotto_id)->where('mal', 'LIKE', '%' . $parola . '%')->paginate(2);
         $prodotto = Prodotto::findOrFail($prodotto_id);
         return view('lista-mal-prodotto')->with('malfunzionamenti', $malfunzionamenti)->with('prodotto', $prodotto);
     }
