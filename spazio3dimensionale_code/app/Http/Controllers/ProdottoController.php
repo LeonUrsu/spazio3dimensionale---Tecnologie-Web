@@ -106,7 +106,7 @@ class ProdottoController
         if ($request->hasFile('immagine')) {
             $file_caricato = $request->file('immagine');
             $nomeImmagine = time() . '.' . $file_caricato->getClientOriginalExtension();
-            $file_caricato->move(public_path('storage/immagini'), $nomeImmagine);
+            $file_caricato->move(public_path('/immagini'), $nomeImmagine);
             $validated['immagine_path'] = $nomeImmagine;
         }
         Prodotto::create($validated);
