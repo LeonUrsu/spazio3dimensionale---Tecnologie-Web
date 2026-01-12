@@ -183,6 +183,6 @@ class ProdottoController
             'prodotto_id' => 'required|exists:prodotti,id',
         ]);
         Malsol::create($validated);
-        return redirect()->route('prodotto.mostra', $request->prodotto_id);
+        return redirect()->route('prodotto.malsol.lista', $request->prodotto_id);
     }
 }

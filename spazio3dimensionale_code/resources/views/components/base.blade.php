@@ -28,10 +28,10 @@
 
             @can('isAdmin')
             <form action="{{route('tecnico.centro.lista')}}" method=GET>
-                <button type="submit">Vedi Tecnici Centri</button>
+                <button type="submit">Tecnici Centri</button>
             </form>
             <form action="{{route('tecnico.azienda.lista')}}" method=GET>
-                <button type="submit">Vedi Tecnici Azienda</button>
+                <button type="submit">Tecnici Azienda</button>
             </form>
             @endcan
 
@@ -57,19 +57,14 @@
     </main>
 
     <footer class="container footer-container">
-        <p> <strong>Chiamaci a:</strong> {{ config('azienda.telefono') }} </p>
-        <p> Scrivici a: {{ config('azienda.email') }} </p>
-        <p> Vineni a trovarci in: {{ config('azienda.indirizzo') }} </p>
-        <p> Orari a: {{ config('azienda.orari') }} </p>
+        <p> <strong>Chiamaci a: </strong> {{ config('azienda.telefono') }} </p>
+        <p> <strong>Scrivici a: </strong> {{ config('azienda.email') }} </p>
+        <p> <strong>Vieni a trovarci in: </strong> {{ config('azienda.indirizzo') }} </p>
+        <p> <strong>Orari: </strong> {{ config('azienda.orari') }} </p>
         <p>
-            <a href="{{ asset('docs/documentazione_spazio3Dimensionale.pdf') }}" target="_blank" class="docs">Leggi la Documentazione (PDF)</a>
+            <strong>Docs: </strong><a href="{{ asset('storage/docs/documentazione_spazio3Dimensionale.pdf') }}" target="_blank" class="docs">Leggi la Documentazione (PDF)</a>
         </p>
-        <p>
-            <a href="https://github.com/LeonUrsu/spazio3dimensionale-Tecnologie-Web.git" target="_blank" class="docs">Vai al progetto su GitHub</a>
-        </p>
-
-        <p> Esame Tecnologie Web Spazio3dimensionale </p>
-        <p> Developer a: {{ config('azienda.developer') }} </p>
+        <p>Tecnologie Web - Spazio3dimensionale</p>
     </footer>
     <x-modal-conferma />
     <script src="{{ asset('js/conferma.js') }}"></script>

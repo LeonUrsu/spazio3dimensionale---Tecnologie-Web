@@ -7,27 +7,11 @@ use App\Http\Controllers\TecnicoCentroController;
 use App\Http\Controllers\TecnicoAziendaController;
 use App\Http\Controllers\CentroAssistenzaController;
 use App\Http\Controllers\ProdottoController;
-use App\Http\Controllers\TecnicoController;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth as FacadesAuth;
-use Illuminate\Support\Facades\DB;
-
 
 //per il paginator utilizzare semplicemente {{ $prodotti->links() }} 
-
 //per stampare velocemente sul browser  uso return dd($centrolist);
-
 //fare un meccanismo per reindirizzare un utente loggato alla home se prova ad andare in login
-/*
 
-if ($request->user()->role === 'admin') {
-    return redirect()->route('admin.dashboard');
-}
-
-if ($request->user()->role === 'tecnico_azienda') {
-    return redirect()->route('tecnico.dashboard');
-}
-*/
 
 
 
@@ -182,19 +166,4 @@ Route::middleware(['auth', 'can:isTecnicoAzienda'])->group(function () {
 
     Route::delete('/prodotto/malsol/cancella/{prodottoId}', [ProdottoController::class, 'cancellaMalSol'])
         ->name('prodotto.malsol.cancella');
-
-    /*     Route::get('/prodotto/soluzione/crea/form', [ProdottoController::class, 'mostraformCreaSol'])
-        ->name('prodotto.sol.crea.form');
-
-    Route::post('/prodotto/soluzione/crea', [ProdottoController::class, 'creaSol'])
-        ->name('prodotto.sol.crea');
-
-    Route::get('/prodotto/soluzione/form/aggiorna/{prodottoId}', [ProdottoController::class, 'mostraFormAggiornaSol'])
-        ->name('prodotto.formAggiorna.sol');
-
-    Route::put('/prodotto/soluzione/aggiorna/{prodottoId}', [ProdottoController::class, 'aggiornaSol'])
-        ->name('prodotto.aggiorna.sol');
-
-    Route::delete('/prodotto/soluzione/cancella/{prodottoId}', [ProdottoController::class, 'cancellaSol'])
-        ->name('prodotto.cancella.sol'); */
 });

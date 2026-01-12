@@ -42,13 +42,13 @@
             <label for="descrizione">volume stampa [cm x cm x cm]:</label>
         </div>
         @if ($errors->any())
-        <div class="alert-error-summary" style="color: red">
+        <div style="color: red">
             <strong>Attenzione:</strong> Ci sono degli errori. Controlla i campi evidenziati.
         </div>
         @endif
         <button type="submit">Salva</button>
     </form>
-    <form action={{$indietro}}>
-        <button type="submit">Annulla</button>
-    </form>
+    <button type="button" onclick="window.location.href='{{ $indietro }}'">
+        Indietro
+    </button>
 </div>

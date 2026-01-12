@@ -19,7 +19,7 @@
                 <form action="{{route('centro.form.aggiorna', $centro->id)}}">
                     <button>Modifica</button>
                 </form>
-                <form action="{{route('centro.cancella', $centro->id)}}" method="POST">
+                <form action="{{route('centro.cancella', $centro->id)}}" method="POST" class="form-conferma">
                     @method('DELETE')
                     <button>Elimina</button>
                 </form>

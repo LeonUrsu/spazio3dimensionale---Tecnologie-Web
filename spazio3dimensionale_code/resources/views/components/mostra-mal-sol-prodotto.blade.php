@@ -13,7 +13,7 @@
         <form action="{{route('prodotto.malsol.form.aggiorna', $malsol->id)}}" method='GET'>
             <button type="submit">Aggiorna</button>
         </form>
-        <form action="{{route('prodotto.malsol.cancella', $malsol->id)}}" method='POST'>
+        <form action="{{route('prodotto.malsol.cancella', $malsol->id)}}" method='POST' class="form-conferma">
             @csrf
             @method('DELETE')
             <button type="submit">Cancella</button>

@@ -19,7 +19,6 @@
         height: 100%;
         background: rgba(0, 0, 0, 0.6);
         display: none;
-        /* Sarà flex tramite JS */
         justify-content: center;
         align-items: center;
         z-index: 9999;

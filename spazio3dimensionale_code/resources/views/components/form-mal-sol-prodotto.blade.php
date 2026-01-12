@@ -24,9 +24,9 @@
         @endif
         <button type="submit">Salva</button>
     </form>
-    <div class="form-actions">
-        <button type="button" class="btn-annulla" onclick="window.location.href='{{ $indietro }}'">
-            Indietro
-        </button>
-    </div>
+
+    <button type="button" class="btn-annulla" onclick="window.location.href='{{ $indietro }}'">
+        Indietro
+    </button>
+
 </div>

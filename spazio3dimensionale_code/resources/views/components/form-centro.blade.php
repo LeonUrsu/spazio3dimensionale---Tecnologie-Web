@@ -1,4 +1,4 @@
-@props(['rotta', 'centro'=> null, 'metodo'=>'POST'])
+@props(['rotta', 'centro'=> null, 'metodo'=>'POST', 'indietro'])
 <div>
     <p>
     <form action="{{ $centro ? route($rotta, $centro->id) : route($rotta) }}" method="POST" class="form-conferma"> @csrf
@@ -32,9 +32,7 @@
         </div>
     </form>
     </p>
-    <p>
-        <a href="{{ url()->previous() }}">
-            <button type="button">Annulla</button>
-        </a>
-    </p>
+    <button type="button" class="btn-annulla" onclick="window.location.href='{{ $indietro }}'">
+        Indietro
+    </button>
 </div>
