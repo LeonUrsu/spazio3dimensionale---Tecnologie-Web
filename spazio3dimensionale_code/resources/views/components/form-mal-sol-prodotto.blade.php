@@ -1,4 +1,3 @@
-{{--i l crea dovrebbe stare dentro il prodotto così si passa l'id prodotto da associare al malSol--}}
 @props(['action', 'malSol'=>null, 'method'=>'POST', 'prodotto_id', 'indietro'])
 <div class="element_with_button_column">
     <form action="{{$action}}" method="POST" class="form-conferma">

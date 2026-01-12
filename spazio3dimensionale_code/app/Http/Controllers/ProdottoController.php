@@ -22,7 +22,6 @@ class ProdottoController
                 $query->where('descrizione', 'LIKE', '%' . $base . '%');
             } else {
                 // Logica per parola esatta (usando REGEXP o semplice LIKE)
-                // Nota: REGEXP [[:<:]] potrebbe non funzionare su tutti i DB
                 $query->where('descrizione', 'REGEXP', '[[:<:]]' . $parola . '[[:>:]]');
             }
         }

@@ -12,7 +12,6 @@
     <div>Consumo Watt: {{$prodotto->consumo_watt}}</div>
     <div>Volume di stampa [cm x cm x cm] : {{$prodotto->volume_stampa}}</div>
     <div>Modalità di installazione: {{$prodotto->modalità_installazione}}</div>
-
     @can('isAdmin')
     <div class="button-vicini">
         <form action="{{route('prodotto.cancella', $prodotto->id)}}" method=POST class="form-conferma">
@@ -30,9 +29,4 @@
         <button>Visualizza Malfunzionamenti</button>
     </form>
     @endcanany
-
-    {{--@can('isTecnicoAzienda')
-        <button></button>
-        <button>aggiorna soluzione</button>
-        @endcan--}}
 </div>

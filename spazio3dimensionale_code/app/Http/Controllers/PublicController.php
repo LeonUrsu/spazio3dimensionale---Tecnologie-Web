@@ -15,7 +15,7 @@ class PublicController # Controller che gestisce le interazione degli utenti non
     {
         $n_centri = Centro::count();
         $n_prodotti = Prodotto::count();
-        $n_tecnici = User::count() - 1;
+        $n_tecnici = User::count();
         return view('home', compact('n_centri', 'n_prodotti', 'n_tecnici'));
     }
 
