@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class modal-conferma extends Component
+class ModalConferma extends Component
 {
     /**
      * Create a new component instance.

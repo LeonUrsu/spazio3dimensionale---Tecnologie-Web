@@ -1,7 +1,7 @@
 @props(['prodotto'])
 <div>
     <div>
-        {{ Breadcrumbs::render('prodotto.mostra', $prodotto) }}
+        {{ \Diglactic\Breadcrumbs\Breadcrumbs::render('prodotto.mostra', $prodotto) }}
     </div>
     <img src="{{ asset('storage/immagini/' . $prodotto->immagine_path) }}" alt="Immagine Prodotto" class="img_home">
     <div>Informazioni su {{$prodotto->marca}} {{$prodotto->modello}}</div>

@@ -1,7 +1,7 @@
 @props(['centri'])
 <div>
     <div>
-        {{ Breadcrumbs::render() }}
+        {{ \Diglactic\Breadcrumbs\Breadcrumbs::render() }}
     </div>
     <h1>Lista dei centri disponibili per la manutenzione</h1>
     <div class="lista">

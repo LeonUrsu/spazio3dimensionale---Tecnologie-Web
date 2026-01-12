@@ -1,7 +1,7 @@
 @props(['malfunzionamenti', 'prodotto'])
 <div>
     <div>
-        {{ Breadcrumbs::render('prodotto.malsol.lista', $prodotto) }}
+        {{ \Diglactic\Breadcrumbs\Breadcrumbs::render('prodotto.malsol.lista', $prodotto) }}
     </div>
     <div class="ricerca-crea-box">
         @can('isTecnicoAzienda')

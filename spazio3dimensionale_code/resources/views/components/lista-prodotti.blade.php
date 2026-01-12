@@ -1,6 +1,6 @@
 <div>
     <div>
-        {{ Breadcrumbs::render('prodotto.lista') }}
+        {{ \Diglactic\Breadcrumbs\Breadcrumbs::render('prodotto.lista') }}
     </div>
 
     <h3>Catalogo dei prodotti disponibili: </h3>

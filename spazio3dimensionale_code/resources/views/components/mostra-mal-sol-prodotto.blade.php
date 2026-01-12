@@ -1,7 +1,7 @@
 @props(['malsol', 'prodotto'])
 <div>
     <div>
-        {{ Breadcrumbs::render('prodotto.malsol.mostra', $prodotto, $malsol) }}
+        {{ \Diglactic\Breadcrumbs\Breadcrumbs::render('prodotto.malsol.mostra', $prodotto, $malsol) }}
     </div>
     @if($malsol)
     <p><strong>titolo malfunzionamento :</strong> {{$malsol->titolo}}</p>

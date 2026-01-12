@@ -25,7 +25,8 @@
         "psr-4": {
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/"
+            "Database\\Seeders\\": "database/seeders/",
+            "Diglactic\\Breadcrumbs\\": "vendor/diglactic/laravel-breadcrumbs/src/"
         }
     },
     "autoload-dev": {

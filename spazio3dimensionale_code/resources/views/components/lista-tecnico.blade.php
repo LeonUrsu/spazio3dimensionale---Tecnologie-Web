@@ -1,7 +1,7 @@
  @props(['rottaVediTecnico', 'rottaFormCreaTecnico' ,'tecnici'])
  <div class="lista">
      <div>
-         {{ Breadcrumbs::render() }}
+         {{ \Diglactic\Breadcrumbs\Breadcrumbs::render() }}
      </div>
      <form action="{{route($rottaFormCreaTecnico)}}" method="GET"> <button type="submit">Crea Tecnico</button></form>
      @foreach ($tecnici as $tecnico)

@@ -1,7 +1,7 @@
 @props(['n_centri', 'n_prodotti', 'n_tecnici'])
 <div class="home-box">
     <div>
-        {{ Breadcrumbs::render() }}
+        {{ \Diglactic\Breadcrumbs\Breadcrumbs::render() }}
     </div>
     <div>
         <div class="titolo-centrale">

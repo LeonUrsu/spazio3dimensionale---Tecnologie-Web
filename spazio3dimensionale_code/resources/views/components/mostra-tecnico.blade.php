@@ -1,7 +1,7 @@
 @props(['tecnico', 'rottaMostraTecnico', 'rottaCancellaTecnico', 'rottaFormAggiornaTecnico', 'nomeCentro', 'specializzazione'])
 <div>
     <div>
-        {{ Breadcrumbs::render($rottaMostraTecnico, $tecnico) }}
+        {{ \Diglactic\Breadcrumbs\Breadcrumbs::render($rottaMostraTecnico, $tecnico) }}
     </div>
     <h4>nome : {{$tecnico->nome}}</h4>
     <h4>cognome : {{$tecnico->cognome}}</h4>
