@@ -11,7 +11,7 @@
 <body>
     <header class="container container-header">
         <div class="logo-container">
-            <a href="/">
+            <a href="{{route('home')}}">
                 <img src="{{ asset('images/logo_spazio3Dimensionale.png') }}" alt="Logo Spazio3D" class="site-logo">
             </a>
         </div>
