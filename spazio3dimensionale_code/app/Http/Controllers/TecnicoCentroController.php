@@ -47,7 +47,7 @@ class TecnicoCentroController
         $validated = $request->validate([
             'nome' => 'required|string|max:255',
             'cognome' => 'required|string|max:255',
-            'data_di_nascita' => 'required|date_format:d-m-Y',
+            'data_di_nascita' => 'required|date_format:d-m-Y|after:01-01-1900',
             'email' => 'required|email|unique:users,email,' . $id,
             'username' => 'required|string|min:4|unique:users,username,' . $id,
             'specializzazione' => 'required|string|max:255',
@@ -76,7 +76,7 @@ class TecnicoCentroController
         $validated = $request->validate([
             'nome' => 'required|string|max:255',
             'cognome' => 'required|string|max:255',
-            'data_di_nascita' => 'required|date_format:d-m-Y',
+            'data_di_nascita' => 'required|date_format:d-m-Y|after:01-01-1900',
             'email' => 'required|email|unique:users,email',
             'username' => 'required|string|min:4|unique:users,username',
             'specializzazione' => 'required|string|max:255',
